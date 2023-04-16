@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2020", "DOM"],
+    "types": ["node"],
+    "module": "commonjs",
+    "target": "ES2020",
+    "baseUrl": ".",
+    "outDir": "./build",
+    "allowUnreachableCode": false,
+    "experimentalDecorators": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "paths": {}
+  },
+  "include": ["./**//**/**/*.ts"]
+}
