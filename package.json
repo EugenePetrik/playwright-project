@@ -10,12 +10,13 @@
     "check-lint": "eslint . --ext ts",
     "check-all": "npm run format && npm run check-lint",
     "test": "npx playwright test --config src/configs/playwright.config.ts --project chromium",
-    "report": "npx playwright show-report"
+    "report": "npx playwright show-report html-report"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/lodash": "^4.14.194",
     "@typescript-eslint/eslint-plugin": "^5.58.0",
     "eslint": "^8.38.0",
     "eslint-config-airbnb-base": "^15.0.0",
@@ -23,6 +24,7 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-playwright": "^0.12.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "lodash": "^4.17.21",
     "prettier": "^2.8.7",
     "typescript": "^5.0.4",
     "winston": "^3.8.2"
