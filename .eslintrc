@@ -39,7 +39,8 @@
         "tsx": "never"
       }
     ],
-    "no-useless-constructor": "off"
+    "no-useless-constructor": "off",
+    "no-await-in-loop": "off"
   },
   "settings": {
     "import/resolver": {

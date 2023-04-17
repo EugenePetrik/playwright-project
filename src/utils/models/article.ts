@@ -5,7 +5,7 @@ import { faker } from '@faker-js/faker';
 import { subDays, format } from 'date-fns';
 import type { IUser, ICreateArticleRequest, IUpdateArticleRequest } from '../types';
 
-export const getRandomCreateArticle = (): ICreateArticleRequest => ({
+export const getRandomArticle = (): ICreateArticleRequest => ({
   article: {
     author: {},
     title: faker.lorem.word(),

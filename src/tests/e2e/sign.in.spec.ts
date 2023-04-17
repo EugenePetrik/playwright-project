@@ -1,7 +1,7 @@
 import { createUser } from '../../utils/api/helpers';
 import { test } from '../../utils/fixtures';
 import { generateUser } from '../../utils/models/user';
-import { expectToHaveCount, expectElementsText, expectElementVisibility, expectToAttribute } from '../../utils/expect';
+import { expectToHaveCount, expectElementsText, expectElementToBeVisible, expectToHaveAttribute } from '../../utils/expect';
 
 test.describe('Sign In', () => {
   const { username, email, password } = generateUser();
@@ -19,9 +19,9 @@ test.describe('Sign In', () => {
 
   test('should successfully sign in', async ({ homePage, signInPage }) => {
     await signInPage.checkPageUrl();
-    await expectElementVisibility(signInPage.title);
-    await expectElementVisibility(signInPage.needAnAccountLink);
-    await expectToAttribute(signInPage.needAnAccountLink, 'href', '/register');
+    await expectElementToBeVisible(signInPage.title);
+    await expectElementToBeVisible(signInPage.needAnAccountLink);
+    await expectToHaveAttribute(signInPage.needAnAccountLink, 'href', '/register');
 
     await signInPage.login({ email, password });
 

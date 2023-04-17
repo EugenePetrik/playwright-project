@@ -1,7 +1,7 @@
 import { createUserAndGetToken } from '../../utils/api/helpers';
 import { test } from '../../utils/fixtures';
 import { generateUser } from '../../utils/models/user';
-import { expectToHaveValue, expectElementVisibility } from '../../utils/expect';
+import { expectToHaveValue, expectElementToBeVisible } from '../../utils/expect';
 
 test.describe('Settings', () => {
   let authToken: string;
@@ -20,10 +20,10 @@ test.describe('Settings', () => {
 
   test('should open the page', async ({ settingsPage }) => {
     await settingsPage.checkPageUrl();
-    await expectElementVisibility(settingsPage.title);
+    await expectElementToBeVisible(settingsPage.title);
     await expectToHaveValue(settingsPage.usernameInput, username);
     await expectToHaveValue(settingsPage.emailInput, email);
-    await expectElementVisibility(settingsPage.updateSettingsButton);
-    await expectElementVisibility(settingsPage.logoutButton);
+    await expectElementToBeVisible(settingsPage.updateSettingsButton);
+    await expectElementToBeVisible(settingsPage.logoutButton);
   });
 });

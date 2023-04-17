@@ -2,6 +2,8 @@ import { Locator } from '@playwright/test';
 import Component from './base.component';
 
 export default class Header extends Component {
+  readonly brandLogo: Locator;
+
   readonly signUpButton: Locator;
 
   readonly signInButton: Locator;
@@ -14,6 +16,7 @@ export default class Header extends Component {
 
   constructor(locator: Locator) {
     super(locator);
+    this.brandLogo = this.rootElement.locator('a.navbar-brand');
     this.signUpButton = this.rootElement.locator('a.nav-link', { hasText: 'Sign up' });
     this.signInButton = this.rootElement.locator('a.nav-link', { hasText: 'Sign in' });
     this.settingsButton = this.rootElement.locator('a.nav-link', { hasText: 'Settings' });

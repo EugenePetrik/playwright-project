@@ -1,7 +1,7 @@
 import { createUserAndGetToken } from '../../utils/api/helpers';
 import { test } from '../../utils/fixtures';
 import { generateUser } from '../../utils/models/user';
-import { expectToHaveCount, expectElementsText, expectElementVisibility } from '../../utils/expect';
+import { expectToHaveCount, expectElementsText, expectElementToBeVisible } from '../../utils/expect';
 
 test.describe('Log Out', () => {
   let authToken: string;
@@ -21,7 +21,7 @@ test.describe('Log Out', () => {
     await homePage.header.clickOnSettings();
 
     await settingsPage.checkPageUrl();
-    await expectElementVisibility(settingsPage.logoutButton);
+    await expectElementToBeVisible(settingsPage.logoutButton);
 
     await settingsPage.clickOnLogout();
 

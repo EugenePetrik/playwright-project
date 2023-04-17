@@ -10,6 +10,7 @@
     "check-lint": "eslint . --ext ts",
     "check-all": "npm run format && npm run check-lint",
     "test": "npx playwright test --config src/configs/playwright.config.ts --project chromium",
+    "test:debug:api": "DEBUG=pw:api npx playwright test --config src/configs/playwright.config.ts --project chromium",
     "report": "npx playwright show-report html-report"
   },
   "keywords": [],
