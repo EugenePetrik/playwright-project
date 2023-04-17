@@ -21,7 +21,6 @@ export default abstract class BasePage {
   }
 
   async checkPageUrl(url = this.url): Promise<void> {
-    logger.debug(`Assert the current URL - ${url}`);
     await expect(this.page).toHaveURL(new RegExp(url));
   }
 }

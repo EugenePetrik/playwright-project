@@ -18,10 +18,6 @@ export default class HomePage extends BasePage {
       localStorage.setItem('id_token', token);
     }, authToken);
 
-    await this.page.evaluate(() => {
-      return localStorage.getItem('id_token');
-    });
-
     await this.page.reload();
   }
 }

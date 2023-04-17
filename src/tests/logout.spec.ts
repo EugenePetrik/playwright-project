@@ -1,15 +1,15 @@
+import { createUserAndGetToken } from '../utils/api/helpers';
 import { test } from '../utils/fixtures';
 import { generateUser } from '../utils/models/user';
 import { expectToHaveCount, expectElementsText } from '../utils/expect';
 
 test.describe('User Log Out', () => {
+  let authToken: string;
   const { username, email, password } = generateUser();
 
-  let authToken: string;
-
-  test.beforeAll(async ({ api }) => {
-    await test.step('Sign up user via API', async () => {
-      authToken = await api.createUser({ username, email, password });
+  test.beforeAll(async () => {
+    await test.step('Sign up user via API and get auth token', async () => {
+      authToken = await createUserAndGetToken({ username, email, password });
     });
   });
 

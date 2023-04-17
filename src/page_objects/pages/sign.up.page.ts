@@ -1,6 +1,7 @@
 import { Locator, Page } from '@playwright/test';
 import BasePage from './base.page';
 import logger from '../../configs/logger';
+import type { IUser } from '../../utils/types';
 
 export default class SignUpPage extends BasePage {
   readonly usernameInput: Locator;

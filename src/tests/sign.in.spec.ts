@@ -1,3 +1,4 @@
+import { createUser } from '../utils/api/helpers';
 import { test } from '../utils/fixtures';
 import { generateUser } from '../utils/models/user';
 import { expectToHaveCount, expectElementsText } from '../utils/expect';
@@ -5,9 +6,9 @@ import { expectToHaveCount, expectElementsText } from '../utils/expect';
 test.describe('User Sign In', () => {
   const { username, email, password } = generateUser();
 
-  test.beforeAll(async ({ api }) => {
+  test.beforeAll(async () => {
     await test.step('Sign up user via API', async () => {
-      await api.createUser({ username, email, password });
+      await createUser({ username, email, password });
     });
   });
 

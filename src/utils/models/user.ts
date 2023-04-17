@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker';
 import _ from 'lodash';
+import type { IUser } from '../types';
 
 export function generateUser(): IUser {
   return {
