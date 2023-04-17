@@ -1,9 +1,9 @@
-import { createUser } from '../utils/api/helpers';
-import { test } from '../utils/fixtures';
-import { generateUser } from '../utils/models/user';
-import { expectToHaveCount, expectElementsText } from '../utils/expect';
+import { createUser } from '../../utils/api/helpers';
+import { test } from '../../utils/fixtures';
+import { generateUser } from '../../utils/models/user';
+import { expectToHaveCount, expectElementsText, expectElementVisibility, expectToAttribute } from '../../utils/expect';
 
-test.describe('User Sign In', () => {
+test.describe('Sign In', () => {
   const { username, email, password } = generateUser();
 
   test.beforeAll(async () => {
@@ -19,6 +19,10 @@ test.describe('User Sign In', () => {
 
   test('should successfully sign in', async ({ homePage, signInPage }) => {
     await signInPage.checkPageUrl();
+    await expectElementVisibility(signInPage.title);
+    await expectElementVisibility(signInPage.needAnAccountLink);
+    await expectToAttribute(signInPage.needAnAccountLink, 'href', '/register');
+
     await signInPage.login({ email, password });
 
     await homePage.checkPageUrl();

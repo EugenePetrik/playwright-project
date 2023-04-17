@@ -1,9 +1,9 @@
-import { createUserAndGetToken } from '../utils/api/helpers';
-import { test } from '../utils/fixtures';
-import { generateUser } from '../utils/models/user';
-import { expectToHaveCount, expectElementsText } from '../utils/expect';
+import { createUserAndGetToken } from '../../utils/api/helpers';
+import { test } from '../../utils/fixtures';
+import { generateUser } from '../../utils/models/user';
+import { expectToHaveCount, expectElementsText, expectElementVisibility } from '../../utils/expect';
 
-test.describe('User Log Out', () => {
+test.describe('Log Out', () => {
   let authToken: string;
   const { username, email, password } = generateUser();
 
@@ -21,6 +21,8 @@ test.describe('User Log Out', () => {
     await homePage.header.clickOnSettings();
 
     await settingsPage.checkPageUrl();
+    await expectElementVisibility(settingsPage.logoutButton);
+
     await settingsPage.clickOnLogout();
 
     await homePage.checkPageUrl();

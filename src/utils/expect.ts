@@ -14,6 +14,13 @@ export const expectToHaveValue = async (element: Locator, value: string): Promis
   await expect(element, `Assert the ${element} locator has ${value} value`).toHaveValue(value);
 };
 
+export const expectToAttribute = async (element: Locator, attribute: string, value: string): Promise<void> => {
+  await expect(element, `Assert the ${element} locator has attribute "${attribute}" with "${value}" value`).toHaveAttribute(
+    attribute,
+    value,
+  );
+};
+
 export const expectToHaveCount = async (element: Locator, count: number): Promise<void> => {
   await expect(element, `Assert the ${element} locator has length ${count}`).toHaveCount(count);
 };
