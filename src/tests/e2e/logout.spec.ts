@@ -14,13 +14,15 @@ test.describe('Log Out', () => {
   });
 
   test.beforeEach(async ({ homePage }) => {
-    await homePage.loginViaApi(authToken);
+    await homePage.loginViaAPI(authToken);
   });
 
   test('should log out successfully', async ({ homePage, settingsPage }) => {
     await homePage.header.clickOnSettings();
 
     await settingsPage.checkPageUrl();
+    await settingsPage.checkPageTitle('Conduit');
+
     await expectElementToBeVisible(settingsPage.logoutButton);
 
     await settingsPage.clickOnLogout();

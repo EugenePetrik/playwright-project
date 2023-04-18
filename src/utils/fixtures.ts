@@ -4,6 +4,8 @@ import SignInPage from '../page_objects/pages/sign.in.page';
 import HomePage from '../page_objects/pages/home.page';
 import SettingsPage from '../page_objects/pages/settings.page';
 import ProfilePage from '../page_objects/pages/profile.page';
+import CreateArticlePage from '../page_objects/pages/create.article.page';
+import ArticleDetailsPage from '../page_objects/pages/article.details.page';
 
 export const test = baseTest.extend<{
   homePage: HomePage;
@@ -11,6 +13,8 @@ export const test = baseTest.extend<{
   signInPage: SignInPage;
   settingsPage: SettingsPage;
   profilePage: ProfilePage;
+  createArticlePage: CreateArticlePage;
+  articleDetailsPage: ArticleDetailsPage;
 }>({
   homePage: async ({ page }, use) => {
     await use(new HomePage(page));
@@ -26,5 +30,11 @@ export const test = baseTest.extend<{
   },
   profilePage: async ({ page }, use) => {
     await use(new ProfilePage(page));
+  },
+  createArticlePage: async ({ page }, use) => {
+    await use(new CreateArticlePage(page));
+  },
+  articleDetailsPage: async ({ page }, use) => {
+    await use(new ArticleDetailsPage(page));
   },
 });

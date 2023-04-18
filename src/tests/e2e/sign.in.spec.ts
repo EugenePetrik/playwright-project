@@ -19,6 +19,8 @@ test.describe('Sign In', () => {
 
   test('should successfully sign in', async ({ homePage, signInPage }) => {
     await signInPage.checkPageUrl();
+    await signInPage.checkPageTitle('Conduit');
+
     await expectElementToBeVisible(signInPage.title);
     await expectElementToBeVisible(signInPage.needAnAccountLink);
     await expectToHaveAttribute(signInPage.needAnAccountLink, 'href', '/register');

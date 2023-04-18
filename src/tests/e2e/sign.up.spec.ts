@@ -10,6 +10,8 @@ test.describe('Sign Up', () => {
     await homePage.header.clickOnSignUp();
 
     await signUpPage.checkPageUrl();
+    await signUpPage.checkPageTitle('Conduit');
+
     await expectElementToBeVisible(signUpPage.title);
     await expectElementToBeVisible(signUpPage.haveAnAccountLink);
     await expectToHaveAttribute(signUpPage.haveAnAccountLink, 'href', '/login');

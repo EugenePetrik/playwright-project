@@ -9,8 +9,8 @@
     "check-format": "prettier --check .",
     "check-lint": "eslint . --ext ts",
     "check-all": "npm run format && npm run check-lint",
-    "test": "npx playwright test --config src/configs/playwright.config.ts --project chromium",
-    "test:debug:api": "DEBUG=pw:api npx playwright test --config src/configs/playwright.config.ts --project chromium",
+    "test": "npx playwright test --config src/configs/playwright.config.e2e.ts --project chromium",
+    "test:debug:api": "DEBUG=pw:api npx playwright test --config src/configs/playwright.config.e2e.ts --project chromium",
     "report": "npx playwright show-report html-report"
   },
   "keywords": [],
@@ -34,6 +34,7 @@
     "@faker-js/faker": "^7.6.0",
     "@playwright/test": "^1.32.3",
     "date-fns": "^2.29.3",
+    "dayjs": "^1.11.7",
     "dotenv": "^16.0.3"
   }
 }

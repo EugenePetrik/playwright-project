@@ -27,7 +27,7 @@ export default class HomePage extends BasePage {
     await super.goto(url);
   }
 
-  async loginViaApi(authToken: string): Promise<void> {
+  async loginViaAPI(authToken: string): Promise<void> {
     await this.goto();
 
     await this.page.evaluate(token => {

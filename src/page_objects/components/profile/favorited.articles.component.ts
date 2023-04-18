@@ -17,7 +17,7 @@ export class FavoritedArticles extends Component {
   async waitForArticles(): Promise<void> {
     await waitFor(async () => {
       const articles = await this.article.rootElement.count();
-      return articles >= 2;
+      return articles > 0;
     });
   }
 }

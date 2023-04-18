@@ -15,17 +15,17 @@ test.describe('Home page for authorized user', () => {
   let token: string;
 
   const { username, email, password } = generateUser();
-  const article = getRandomArticle();
+  const { title, description, body, tagList } = getRandomArticle();
 
   test.beforeAll(async () => {
     token = await createUserAndGetToken({ username, email, password });
     const context = await getAuthContext({ token });
     const articleClient = new ArticleAPIClient(context);
-    await articleClient.createArticleAPI(article);
+    await articleClient.createArticleAPI({ title, description, body, tagList });
   });
 
   test.beforeEach(async ({ homePage }) => {
-    await homePage.loginViaApi(token);
+    await homePage.loginViaAPI(token);
   });
 
   test('should have brand logo in navigation bar', async ({ homePage }) => {
@@ -42,26 +42,31 @@ test.describe('Home page for authorized user', () => {
     await homePage.tabs.clickOnYourFeedTab();
 
     await homePage.checkPageUrl('/my-feed');
+    await homePage.checkPageTitle('Conduit');
+
     await expectElementToContainText(homePage.yourFeedTab.noArticlesTitle, 'No articles are here... yet.');
   });
 
   test('should have global feed', async ({ homePage }) => {
     await homePage.checkPageUrl('/');
+    await homePage.checkPageTitle('Conduit');
+
     await homePage.globalFeedTab.waitForArticles();
 
     await expectElementsToBeGreaterThan(homePage.globalFeedTab.article.rootElement, 3);
-    await expectElementsToContainText(homePage.globalFeedTab.article.title, article.article.title);
+    await expectElementsToContainText(homePage.globalFeedTab.article.title, title);
   });
 
   test('should have popular tags', async ({ homePage }) => {
     await homePage.checkPageUrl('/');
+    await homePage.checkPageTitle('Conduit');
+
     await homePage.popularTags.waitForPopularTags();
 
     await expectElementToContainText(homePage.popularTags.title, 'Popular Tags');
     await expectElementsToBeGreaterThan(homePage.popularTags.tags, 3);
 
-    // eslint-disable-next-line no-restricted-syntax
-    for (const tag of article.article.tagList) {
+    for (const tag of tagList) {
       await expectElementsToContainText(homePage.popularTags.tags, tag);
     }
   });

@@ -10,6 +10,10 @@ export const expectElementToBeHidden = async (element: Locator): Promise<void> =
   await expect(element, `Assert the ${element} locator is visible`).toBeHidden();
 };
 
+export const expectElementToHaveText = async (element: Locator, text: string, ignoreCase = true): Promise<void> => {
+  await expect(element, `Assert the ${element} locator has text ${text} text`).toHaveText(text, { ignoreCase });
+};
+
 export const expectElementToContainText = async (element: Locator, toContain: string | string[], ignoreCase = true): Promise<void> => {
   await expect(element, `Assert the ${element} locator contains ${toContain} text`).toContainText(toContain, { ignoreCase });
 };
@@ -36,7 +40,12 @@ export const expectElementsText = async (element: Locator, expectedText: string[
 
 export const expectElementsToContainText = async (element: Locator, expectedText: string): Promise<void> => {
   const actualText = await Promise.all((await element.all()).map(async el => (await el.textContent())?.trim()));
-  expect(actualText, `Assert the "${actualText}" text to equal "${expectedText}" text`).toContain(expectedText);
+  expect(actualText, `Assert the "${actualText}" text contains "${expectedText}" text`).toContain(expectedText);
+};
+
+export const expectElementsNotToContainText = async (element: Locator, expectedText: string): Promise<void> => {
+  const actualText = await Promise.all((await element.all()).map(async el => (await el.textContent())?.trim()));
+  expect(actualText, `Assert the "${actualText}" text not contains "${expectedText}" text`).not.toContain(expectedText);
 };
 
 export const expectElementsToBeGreaterThan = async (element: Locator, count: number): Promise<void> => {

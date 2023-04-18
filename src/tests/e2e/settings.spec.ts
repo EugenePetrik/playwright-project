@@ -14,12 +14,14 @@ test.describe('Settings', () => {
   });
 
   test.beforeEach(async ({ homePage, settingsPage }) => {
-    await homePage.loginViaApi(authToken);
+    await homePage.loginViaAPI(authToken);
     await settingsPage.goto();
   });
 
   test('should open the page', async ({ settingsPage }) => {
     await settingsPage.checkPageUrl();
+    await settingsPage.checkPageTitle('Conduit');
+
     await expectElementToBeVisible(settingsPage.title);
     await expectToHaveValue(settingsPage.usernameInput, username);
     await expectToHaveValue(settingsPage.emailInput, email);

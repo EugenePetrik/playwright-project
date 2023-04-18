@@ -33,4 +33,8 @@ export default abstract class BasePage implements IPage {
   async checkPageUrl(url = this.url): Promise<void> {
     await expect(this.page).toHaveURL(new RegExp(url));
   }
+
+  async checkPageTitle(title: string | RegExp): Promise<void> {
+    await expect(this.page).toHaveTitle(title);
+  }
 }
