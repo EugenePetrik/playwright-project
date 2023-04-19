@@ -66,7 +66,7 @@ test.describe('Profile - Favorited articles', () => {
     });
 
     test('should display articles', async ({ profilePage }) => {
-      await profilePage.myArticles.waitForArticles();
+      await profilePage.myArticles.article.waitForArticles();
 
       await expectToHaveCount(profilePage.myArticles.article.rootElement, 1);
       await expectElementsToContainText(profilePage.myArticles.article.title, title);

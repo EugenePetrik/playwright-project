@@ -9,6 +9,7 @@ import {
   expectElementsToBeGreaterThan,
   expectElementsToContainText,
   expectToHaveAttribute,
+  expectToHaveCount,
 } from '../../../utils/expect';
 
 test.describe('Home page for authorized user', () => {
@@ -51,7 +52,7 @@ test.describe('Home page for authorized user', () => {
     await homePage.checkPageUrl('/');
     await homePage.checkPageTitle('Conduit');
 
-    await homePage.globalFeedTab.waitForArticles();
+    await homePage.globalFeedTab.article.waitForArticles();
 
     await expectElementsToBeGreaterThan(homePage.globalFeedTab.article.rootElement, 3);
     await expectElementsToContainText(homePage.globalFeedTab.article.title, title);
@@ -76,5 +77,18 @@ test.describe('Home page for authorized user', () => {
     await expectToHaveAttribute(homePage.footer.brandLogo, 'href', '/');
     await expectElementToContainText(homePage.footer.attribution, 'An interactive learning project from');
     await expectElementToContainText(homePage.footer.attribution, 'Thinkster. Code & design licensed under MIT.');
+  });
+
+  test('should add an article to favorite', async ({ homePage, profilePage }) => {
+    await homePage.globalFeedTab.article.waitForArticles();
+
+    const articleTitle = await homePage.globalFeedTab.article.getArticleTitle();
+    await homePage.globalFeedTab.article.clickOnLikeButton();
+
+    await profilePage.goto(`/@${username}`);
+    await profilePage.tabs.clickOnFavoritedArticlesTab();
+
+    await expectToHaveCount(profilePage.favoritedArticles.article.rootElement, 1);
+    await expectElementsToContainText(profilePage.favoritedArticles.article.title, articleTitle);
   });
 });

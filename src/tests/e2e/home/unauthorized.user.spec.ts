@@ -46,7 +46,7 @@ test.describe('Home page for unauthorized user', () => {
     await homePage.checkPageUrl('/');
     await homePage.checkPageTitle('Conduit');
 
-    await homePage.globalFeedTab.waitForArticles();
+    await homePage.globalFeedTab.article.waitForArticles();
 
     await expectElementsToBeGreaterThan(homePage.globalFeedTab.article.rootElement, 3);
     await expectElementsToContainText(homePage.globalFeedTab.article.title, title);

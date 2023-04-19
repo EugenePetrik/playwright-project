@@ -32,7 +32,7 @@ test.describe('Delete an article', () => {
     await homePage.checkPageUrl('/');
     await homePage.checkPageTitle('Conduit');
 
-    await homePage.globalFeedTab.waitForArticles();
+    await homePage.globalFeedTab.article.waitForArticles();
 
     await expectElementsNotToContainText(homePage.globalFeedTab.article.title, title);
   });

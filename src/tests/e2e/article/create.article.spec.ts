@@ -27,9 +27,10 @@ test.describe('Create a new article', () => {
   });
 
   test('should create a new article', async ({ createArticlePage, articleDetailsPage, profilePage }) => {
-    await createArticlePage.createArticleWith({ title, description, body, tagList });
+    await createArticlePage.form.fillInFormWith({ title, description, body, tagList });
 
     await articleDetailsPage.checkPageUrl();
+    await articleDetailsPage.checkPageTitle('Conduit');
 
     await expectElementToHaveText(articleDetailsPage.banner.title, title);
     await expectElementToBeVisible(articleDetailsPage.banner.articleEditButton);
@@ -54,7 +55,7 @@ test.describe('Create a new article', () => {
     await profilePage.goto(`/@${username}`);
 
     await profilePage.checkPageUrl(`/@${username}`);
-    await profilePage.myArticles.waitForArticles();
+    await profilePage.myArticles.article.waitForArticles();
 
     await expectToHaveCount(profilePage.myArticles.article.rootElement, 1);
     await expectElementsToContainText(profilePage.myArticles.article.title, title);

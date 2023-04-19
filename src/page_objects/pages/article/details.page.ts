@@ -1,6 +1,6 @@
 import { Page } from '@playwright/test';
-import BasePage from './base.page';
-import { Actions, Banner, CommentForm, Content } from '../components/article_details';
+import BasePage from '../base.page';
+import { Actions, Banner, CommentForm, Content } from '../../components/article_details';
 
 export default class ArticleDetailsPage extends BasePage {
   readonly actions: Actions;

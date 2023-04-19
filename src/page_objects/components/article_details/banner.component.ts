@@ -28,6 +28,10 @@ export class Banner extends Component {
     this.articleFavoriteButton = this.rootElement.locator('[data-qa-id=article-favorite]');
   }
 
+  async clickOnArticleEditButton(): Promise<void> {
+    await Promise.all([this.page.waitForNavigation(), this.articleEditButton.click()]);
+  }
+
   async clickOnArticleDeleteButton(): Promise<void> {
     await Promise.all([this.page.waitForNavigation(), this.articleDeleteButton.click()]);
   }

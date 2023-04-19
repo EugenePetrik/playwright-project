@@ -1,9 +1,11 @@
 import { Locator, Page } from '@playwright/test';
-import BasePage from './base.page';
+import Component from './base.component';
 import { ICreateArticle } from '../../utils/types';
 import logger from '../../configs/logger';
 
-export default class CreateArticlePage extends BasePage {
+export class Form extends Component {
+  readonly page: Page;
+
   readonly titleInput: Locator;
 
   readonly descriptionInput: Locator;
@@ -14,21 +16,17 @@ export default class CreateArticlePage extends BasePage {
 
   readonly publishArticleButton: Locator;
 
-  constructor(page: Page, readonly url: string = '/editor') {
-    super(page);
-    this.url = url;
-    this.titleInput = this.page.locator('[data-qa-id=editor-title]');
-    this.descriptionInput = this.page.locator('[data-qa-id=editor-description]');
-    this.bodyInput = this.page.getByPlaceholder('Write your article (in markdown)');
-    this.tagsInput = this.page.locator('[data-qa-id=editor-tags]');
-    this.publishArticleButton = this.page.locator('[data-qa-id=editor-publish]');
+  constructor(locator: Locator, page: Page) {
+    super(locator);
+    this.page = page;
+    this.titleInput = this.rootElement.locator('[data-qa-id=editor-title]');
+    this.descriptionInput = this.rootElement.locator('[data-qa-id=editor-description]');
+    this.bodyInput = this.rootElement.getByPlaceholder('Write your article (in markdown)');
+    this.tagsInput = this.rootElement.locator('[data-qa-id=editor-tags]');
+    this.publishArticleButton = this.rootElement.locator('[data-qa-id=editor-publish]');
   }
 
-  async goto(url = this.url): Promise<void> {
-    await super.goto(url);
-  }
-
-  async createArticleWith(article: ICreateArticle): Promise<void> {
+  async fillInFormWith(article: ICreateArticle): Promise<void> {
     const { title, description, body, tagList } = article;
 
     logger.debug(`Create an article with - ${JSON.stringify({ title, description, body, tagList })}`);
