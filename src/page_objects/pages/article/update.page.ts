@@ -12,6 +12,6 @@ export default class UpdateArticlePage extends BasePage {
   }
 
   async goto(url = this.url): Promise<void> {
-    await super.goto(url);
+    await super.goto(`/editor/${url}`);
   }
 }

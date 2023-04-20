@@ -52,3 +52,15 @@ export const expectElementsToBeGreaterThan = async (element: Locator, count: num
   const elements = await element.count();
   expect(elements, `Assert the ${element} locator length to be grather than ${count}`).toBeGreaterThan(count);
 };
+
+export const expectElementSnapshot = async (
+  element: Locator,
+  name: string,
+  {
+    threshold = 0,
+    maxDiffPixels = 0,
+    maxDiffPixelRatio = 0,
+  }: { threshold?: number; maxDiffPixels?: number; maxDiffPixelRatio?: number } = {},
+): Promise<void> => {
+  expect(await element.screenshot()).toMatchSnapshot(name, { threshold, maxDiffPixels, maxDiffPixelRatio });
+};

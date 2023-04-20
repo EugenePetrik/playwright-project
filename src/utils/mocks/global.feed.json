@@ -1,0 +1,90 @@
+{
+  "articles": [
+    {
+      "title": "Article #1",
+      "slug": "my-first-article",
+      "body": "Mock Global Feed response",
+      "createdAt": "2021-05-24T14:38:26.493Z",
+      "updatedAt": "2021-05-24T14:38:26.493Z",
+      "tagList": ["javascript", "testing", "webdriverio"],
+      "description": "Mock Global Feed response",
+      "author": {
+        "username": "playground",
+        "bio": null,
+        "image": "https://media.bitdegree.org/storage/media/images/2018/12/node-js-interview-questions-logo-2-266x300.png",
+        "following": false
+      },
+      "favorited": false,
+      "favoritesCount": 10
+    },
+    {
+      "title": "Article #2",
+      "slug": "my-second-article",
+      "body": "Mock Global Feed response",
+      "createdAt": "2021-05-24T14:28:54.296Z",
+      "updatedAt": "2021-05-24T14:28:54.296Z",
+      "tagList": ["javascript", "testing", "webdriverio"],
+      "description": "Mock Global Feed response",
+      "author": {
+        "username": "playground",
+        "bio": null,
+        "image": "https://media.bitdegree.org/storage/media/images/2018/12/node-js-interview-questions-logo-2-266x300.png",
+        "following": false
+      },
+      "favorited": false,
+      "favoritesCount": 20
+    },
+    {
+      "title": "Article #3",
+      "slug": "my-third-article",
+      "body": "Mock Global Feed response",
+      "createdAt": "2021-05-24T14:23:23.302Z",
+      "updatedAt": "2021-05-24T14:23:23.302Z",
+      "tagList": ["javascript", "testing", "webdriverio"],
+      "description": "Mock Global Feed response",
+      "author": {
+        "username": "playground",
+        "bio": null,
+        "image": "https://media.bitdegree.org/storage/media/images/2018/12/node-js-interview-questions-logo-2-266x300.png",
+        "following": false
+      },
+      "favorited": false,
+      "favoritesCount": 30
+    },
+    {
+      "title": "Article #4",
+      "slug": "my-fourth-article",
+      "body": "Mock Global Feed response",
+      "createdAt": "2021-05-24T14:23:23.302Z",
+      "updatedAt": "2021-05-24T14:23:23.302Z",
+      "tagList": ["javascript", "testing", "webdriverio"],
+      "description": "Mock Global Feed response",
+      "author": {
+        "username": "playground",
+        "bio": null,
+        "image": "https://media.bitdegree.org/storage/media/images/2018/12/node-js-interview-questions-logo-2-266x300.png",
+        "following": false
+      },
+      "favorited": false,
+      "favoritesCount": 40
+    },
+    {
+      "title": "Article #5",
+      "slug": "my-fifth-article",
+      "body": "Mock Global Feed response",
+      "createdAt": "2021-05-24T14:23:23.302Z",
+      "updatedAt": "2021-05-24T14:23:23.302Z",
+      "tagList": ["javascript", "testing", "webdriverio"],
+      "description": "Mock Global Feed response",
+      "author": {
+        "username": "playground",
+        "bio": null,
+        "image": "https://media.bitdegree.org/storage/media/images/2018/12/node-js-interview-questions-logo-2-266x300.png",
+        "following": false
+      },
+      "favorited": false,
+      "favoritesCount": 50
+    }
+  ],
+  "articlesCount": 500
+}

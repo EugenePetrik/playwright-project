@@ -37,4 +37,31 @@ export default abstract class BasePage implements IPage {
   async checkPageTitle(title: string | RegExp): Promise<void> {
     await expect(this.page).toHaveTitle(title);
   }
+
+  async waitForTimeout(time = 2_000): Promise<void> {
+    await this.page.waitForTimeout(time);
+  }
+
+  async mockResponse<T>(route: string, data: T): Promise<void> {
+    logger.debug(`Mock API data for the User request - /api/user/`);
+
+    await this.page.route(route, async route => {
+      return route.fulfill({
+        status: 200,
+        headers: { 'Access-Control-Allow-Origin': '*', contentType: 'application/json; charset=utf-8' },
+        body: JSON.stringify(data),
+      });
+    });
+  }
+
+  async checkPageSnapshot(
+    name: string,
+    {
+      threshold = 0.3,
+      maxDiffPixels = 0,
+      maxDiffPixelRatio = 0,
+    }: { threshold?: number; maxDiffPixels?: number; maxDiffPixelRatio?: number } = {},
+  ): Promise<void> {
+    expect(await this.page.screenshot()).toMatchSnapshot(name, { threshold, maxDiffPixels, maxDiffPixelRatio });
+  }
 }

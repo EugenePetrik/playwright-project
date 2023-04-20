@@ -5,8 +5,6 @@ import UserInfo from '../user.info.component';
 export class Actions extends Component {
   readonly userInfo: UserInfo;
 
-  readonly title: Locator;
-
   readonly articleEditButton: Locator;
 
   readonly articleDeleteButton: Locator;
@@ -18,7 +16,6 @@ export class Actions extends Component {
   constructor(locator: Locator) {
     super(locator);
     this.userInfo = new UserInfo(this.rootElement.locator('div.article-meta'));
-    this.title = this.rootElement.locator('[data-qa-id=article-title]');
     this.articleEditButton = this.rootElement.locator('[data-qa-id=article-edit]');
     this.articleDeleteButton = this.rootElement.locator('[data-qa-id=article-delete]');
     this.articleFollowButton = this.rootElement.locator('[data-qa-id=article-follow]');

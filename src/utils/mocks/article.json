@@ -1,0 +1,18 @@
+{
+  "article": {
+    "slug": "edit-article-page",
+    "title": "Labore ut neque",
+    "description": "Eveniet quasi sequi cumque omnis aut et rerum deserunt aut.",
+    "body": "Debitis corrupti odio voluptates temporibus asperiores quasi.",
+    "createdAt": "2021-07-31T12:46:20.125Z",
+    "updatedAt": "2021-07-31T12:46:20.125Z",
+    "tagList": ["javascript", "testing", "webdriverio"],
+    "favorited": true,
+    "favoritesCount": 0,
+    "author": {
+      "username": "playground",
+      "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
+      "following": false
+    }
+  }
+}

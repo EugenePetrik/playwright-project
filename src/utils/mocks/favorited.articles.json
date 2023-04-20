@@ -1,0 +1,56 @@
+{
+  "articles": [
+    {
+      "title": "Favorited Articles #1",
+      "slug": "favorited-articles-1",
+      "body": "Mock Favorited Articles Feed response",
+      "createdAt": "2021-06-01T17:58:09.158Z",
+      "updatedAt": "2021-06-01T17:58:09.158Z",
+      "tagList": ["javascript", "testing", "webdriverio"],
+      "description": "Mock Favorited Articles Feed response",
+      "author": {
+        "username": "playground",
+        "bio": null,
+        "image": "https://media.bitdegree.org/storage/media/images/2018/12/node-js-interview-questions-logo-2-266x300.png",
+        "following": false
+      },
+      "favorited": true,
+      "favoritesCount": 1
+    },
+    {
+      "title": "Favorited Articles #2",
+      "slug": "favorited-articles-2",
+      "body": "Mock Favorited Articles Feed response",
+      "createdAt": "2021-06-01T17:58:09.158Z",
+      "updatedAt": "2021-06-01T17:58:09.158Z",
+      "tagList": ["javascript", "testing", "webdriverio"],
+      "description": "Mock Favorited Articles Feed response",
+      "author": {
+        "username": "playground",
+        "bio": null,
+        "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
+        "following": false
+      },
+      "favorited": true,
+      "favoritesCount": 1
+    },
+    {
+      "title": "Favorited Articles #3",
+      "slug": "favorited-articles-3",
+      "body": "Mock Favorited Articles Feed response",
+      "createdAt": "2021-06-01T17:58:09.158Z",
+      "updatedAt": "2021-06-01T17:58:09.158Z",
+      "tagList": ["javascript", "testing", "webdriverio"],
+      "description": "Mock Favorited Articles Feed response",
+      "author": {
+        "username": "playground",
+        "bio": null,
+        "image": "https://static.productionready.io/images/smiley-cyrus.jpg",
+        "following": false
+      },
+      "favorited": true,
+      "favoritesCount": 1
+    }
+  ],
+  "articlesCount": 3
+}
