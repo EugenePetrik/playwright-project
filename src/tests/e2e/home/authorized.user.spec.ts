@@ -85,7 +85,7 @@ test.describe('Home page for authorized user', () => {
     const articleTitle = await homePage.globalFeedTab.article.getArticleTitle();
     await homePage.globalFeedTab.article.clickOnLikeButton();
 
-    await profilePage.goto(`/@${username}`);
+    await profilePage.goto(username);
     await profilePage.tabs.clickOnFavoritedArticlesTab();
 
     await expectToHaveCount(profilePage.favoritedArticles.article.rootElement, 1);

@@ -11,7 +11,7 @@ export default class ProfilePage extends BasePage {
 
   readonly tabs: Tabs;
 
-  constructor(page: Page, readonly url: string = '/') {
+  constructor(page: Page, readonly url: string = '/@') {
     super(page);
     this.url = url;
     this.favoritedArticles = new FavoritedArticles(this.page.locator('[data-qa-type=article-list]'));
@@ -21,6 +21,6 @@ export default class ProfilePage extends BasePage {
   }
 
   async goto(url = this.url): Promise<void> {
-    await super.goto(url);
+    await super.goto(`/@${url}`);
   }
 }

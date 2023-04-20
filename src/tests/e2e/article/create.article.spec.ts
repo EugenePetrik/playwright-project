@@ -52,7 +52,7 @@ test.describe('Create a new article', () => {
     await expectElementToBeVisible(articleDetailsPage.commentForm.commentInput);
     await expectElementToBeVisible(articleDetailsPage.commentForm.postCommentButton);
 
-    await profilePage.goto(`/@${username}`);
+    await profilePage.goto(username);
 
     await profilePage.checkPageUrl(`/@${username}`);
     await profilePage.myArticles.article.waitForArticles();

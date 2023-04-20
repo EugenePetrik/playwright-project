@@ -30,7 +30,7 @@ test.describe('Profile - My articles', () => {
 
   test.describe('without articles', () => {
     test.beforeEach(async ({ profilePage }) => {
-      await profilePage.goto(`/@${username}`);
+      await profilePage.goto(username);
     });
 
     test('should not display articles', async ({ profilePage }) => {
@@ -48,7 +48,7 @@ test.describe('Profile - My articles', () => {
     });
 
     test.beforeEach(async ({ profilePage }) => {
-      await profilePage.goto(`/@${username}`);
+      await profilePage.goto(username);
     });
 
     test('should open the page', async ({ profilePage }) => {

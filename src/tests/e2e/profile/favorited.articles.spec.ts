@@ -31,7 +31,7 @@ test.describe('Profile - Favorited articles', () => {
 
   test.describe('without articles', () => {
     test.beforeEach(async ({ profilePage }) => {
-      await profilePage.goto(`/@${username}`);
+      await profilePage.goto(username);
       await profilePage.tabs.clickOnFavoritedArticlesTab();
     });
 
@@ -52,7 +52,7 @@ test.describe('Profile - Favorited articles', () => {
     });
 
     test.beforeEach(async ({ profilePage }) => {
-      await profilePage.goto(`/@${username}`);
+      await profilePage.goto(username);
       await profilePage.tabs.clickOnFavoritedArticlesTab();
     });
 
