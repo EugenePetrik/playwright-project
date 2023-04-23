@@ -1,4 +1,7 @@
-import { expect, Page } from '@playwright/test';
+import { expect, Page, TestInfo } from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
+import { AxeResults } from 'axe-core';
+import { attachAxeReport } from '../../utils/axe.reporter';
 import logger from '../../configs/logger';
 import BaseConfig from '../../configs/base.config';
 import Header from '../components/header.component';
@@ -63,5 +66,27 @@ export default abstract class BasePage implements IPage {
     }: { threshold?: number; maxDiffPixels?: number; maxDiffPixelRatio?: number } = {},
   ): Promise<void> {
     expect(await this.page.screenshot()).toMatchSnapshot(name, { threshold, maxDiffPixels, maxDiffPixelRatio });
+  }
+
+  async accessibilityScan(
+    testInfo: TestInfo,
+    {
+      withTags = BaseConfig.accessibilityTags,
+      withRules = BaseConfig.accessibilityRules,
+      include = 'body',
+    }: {
+      withTags?: string | string[];
+      withRules?: string | string[];
+      include?: string | string[];
+    } = {},
+  ): Promise<number> {
+    const accessibilityScanResults: AxeResults = await new AxeBuilder({ page: this.page })
+      .withTags(withTags)
+      .withRules(withRules)
+      .include(include)
+      .analyze();
+
+    await attachAxeReport(testInfo, accessibilityScanResults);
+    return accessibilityScanResults.violations.length;
   }
 }
