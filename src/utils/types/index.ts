@@ -1,3 +1,3 @@
 export { IAPIClient } from './client';
 export { IUser, IAuthUser } from './user';
-export { ICreateArticle, IUpdateArticle, ArticleResponse, ArticlesResponse } from './article';
+export { ICreateArticle, IUpdateArticle, IArticleResponse, IArticlesResponse } from './article';

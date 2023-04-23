@@ -22,7 +22,7 @@ export interface IUpdateArticle {
   };
 }
 
-export interface ArticleResponse {
+export interface IArticleResponse {
   article: {
     slug: string;
     title: string;
@@ -41,7 +41,22 @@ export interface ArticleResponse {
   };
 }
 
-export interface ArticlesResponse {
-  articles: Array<ArticleResponse>;
+export interface IArticlesResponse {
+  articles: Array<{
+    slug: string;
+    title: string;
+    description: string;
+    body: string;
+    createdAt: string;
+    updatedAt: string;
+    tagList: string[];
+    favorited: boolean;
+    favoritesCount: number;
+    author: {
+      username?: string;
+      image?: string;
+      following?: boolean;
+    };
+  }>;
   articlesCount: number;
 }

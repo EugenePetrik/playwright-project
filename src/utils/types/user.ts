@@ -7,7 +7,7 @@ export interface IUser {
 export interface IAuthUser {
   user: {
     email: string;
-    password: string;
+    username: string;
     token: string;
   };
 }
