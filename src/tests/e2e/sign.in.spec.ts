@@ -13,7 +13,10 @@ test.describe('Sign In', () => {
   });
 
   test.beforeEach(async ({ homePage }) => {
-    await homePage.goto();
+    await test.step('Open Home page', async () => {
+      await homePage.goto();
+    });
+
     await homePage.header.clickOnSignIn();
   });
 

@@ -34,7 +34,9 @@ export const expectToHaveCount = async (element: Locator, count: number): Promis
 };
 
 export const expectElementsText = async (element: Locator, expectedText: string[]): Promise<void> => {
-  const actualText = await Promise.all((await element.all()).map(async el => (await el.textContent())?.trim()));
+  // const actualText = await Promise.all((await element.all()).map(async el => (await el.textContent())?.trim()));
+  // expect(actualText, `Assert the "${actualText}" text to equal "${expectedText}" text`).toEqual(expectedText);
+  const actualText = (await element.allTextContents()).map(text => text.trim());
   expect(actualText, `Assert the "${actualText}" text to equal "${expectedText}" text`).toEqual(expectedText);
 };
 
