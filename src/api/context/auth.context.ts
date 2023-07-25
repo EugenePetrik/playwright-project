@@ -1,4 +1,4 @@
-import { APIRequestContext, request } from '@playwright/test';
+import { type APIRequestContext, request } from '@playwright/test';
 import { getDefaultAPIContext } from './default.context';
 import type { IUser } from '../../utils/types';
 import BaseConfig from '../../configs/base.config';

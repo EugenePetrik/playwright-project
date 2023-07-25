@@ -1,4 +1,4 @@
-import { APIRequestContext } from '@playwright/test';
+import type { APIRequestContext } from '@playwright/test';
 import type { IAPIClient } from '../../utils/types';
 
 export class APIClient implements IAPIClient {

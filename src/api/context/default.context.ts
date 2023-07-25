@@ -1,4 +1,4 @@
-import { APIRequestContext, request } from '@playwright/test';
+import { type APIRequestContext, request } from '@playwright/test';
 import BaseConfig from '../../configs/base.config';
 
 export const getDefaultAPIContext = async (): Promise<APIRequestContext> => {

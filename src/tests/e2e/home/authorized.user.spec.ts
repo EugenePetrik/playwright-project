@@ -12,6 +12,8 @@ import {
   expectToHaveCount,
 } from '../../../utils/expect';
 
+test.describe.configure({ mode: 'serial' });
+
 test.describe('Home page for authorized user', () => {
   let token: string;
 

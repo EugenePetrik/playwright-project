@@ -41,7 +41,8 @@
     ],
     "no-useless-constructor": "off",
     "no-await-in-loop": "off",
-    "no-restricted-syntax": "off"
+    "no-restricted-syntax": "off",
+    "playwright/expect-expect": "off"
   },
   "settings": {
     "import/resolver": {

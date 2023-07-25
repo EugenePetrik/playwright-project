@@ -11,6 +11,8 @@ import {
   expectElementsToContainText,
 } from '../../../utils/expect';
 
+test.describe.configure({ mode: 'serial' });
+
 test.describe('Create a new article', () => {
   let token: string;
 

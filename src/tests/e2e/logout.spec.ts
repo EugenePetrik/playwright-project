@@ -3,6 +3,8 @@ import { test } from '../../utils/fixtures';
 import { generateUser } from '../../utils/models/user';
 import { expectToHaveCount, expectElementsText, expectElementToBeVisible } from '../../utils/expect';
 
+test.describe.configure({ mode: 'serial' });
+
 test.describe('Log Out', () => {
   let authToken: string;
   const { username, email, password } = generateUser();

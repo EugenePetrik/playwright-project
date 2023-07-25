@@ -12,6 +12,8 @@ import {
   expectToHaveCount,
 } from '../../../utils/expect';
 
+test.describe.configure({ mode: 'serial' });
+
 test.describe('Profile - My articles', () => {
   let context: APIRequestContext;
   let token: string;

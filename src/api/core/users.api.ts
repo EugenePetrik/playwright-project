@@ -1,4 +1,4 @@
-import { APIRequestContext, APIResponse } from '@playwright/test';
+import { type APIRequestContext, type APIResponse } from '@playwright/test';
 import { APIRoutes } from '../../utils/api/routes';
 import type { IAuthUser, IUser } from '../../utils/types';
 import { APIClient } from './api.client';

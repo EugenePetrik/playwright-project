@@ -3,8 +3,10 @@ import { test } from '../../../utils/fixtures';
 import { createUserAndGetToken, getAuthContext } from '../../../utils/api/helpers';
 import { getRandomArticle } from '../../../utils/models/article';
 import { ArticleAPIClient } from '../../../api/core/articles.api';
-import { ArticleResponse } from '../../../utils/types';
+import type { IArticleResponse } from '../../../utils/types';
 import { expectElementsNotToContainText } from '../../../utils/expect';
+
+test.describe.configure({ mode: 'serial' });
 
 test.describe('Delete an article', () => {
   let token: string;
@@ -18,7 +20,7 @@ test.describe('Delete an article', () => {
     const context = await getAuthContext({ token });
     const articleClient = new ArticleAPIClient(context);
     const createArticleResp = await articleClient.createArticleAPI({ title, description, body, tagList });
-    ({ slug } = ((await createArticleResp.json()) as ArticleResponse).article);
+    ({ slug } = ((await createArticleResp.json()) as IArticleResponse).article);
   });
 
   test.beforeEach(async ({ articleDetailsPage, homePage }) => {

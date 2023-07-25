@@ -2,6 +2,8 @@ import { test } from '../../utils/fixtures';
 import { generateUser } from '../../utils/models/user';
 import { expectElementToBeVisible, expectToHaveAttribute } from '../../utils/expect';
 
+test.describe.configure({ mode: 'serial' });
+
 test.describe('Sign Up', () => {
   const { username, email, password } = generateUser();
 

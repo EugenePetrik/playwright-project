@@ -12,6 +12,8 @@ import {
   expectElementsToContainText,
 } from '../../../utils/expect';
 
+test.describe.configure({ mode: 'serial' });
+
 test.describe('Home page for unauthorized user', () => {
   const { username, email, password } = generateUser();
   const { title, description, body, tagList } = getRandomArticle();
