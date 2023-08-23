@@ -42,7 +42,10 @@
     "no-useless-constructor": "off",
     "no-await-in-loop": "off",
     "no-restricted-syntax": "off",
-    "playwright/expect-expect": "off"
+    "playwright/expect-expect": "off",
+    "playwright/no-wait-for-timeout": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "no-unused-vars": "error"
   },
   "settings": {
     "import/resolver": {
