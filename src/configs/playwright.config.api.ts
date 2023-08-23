@@ -1,8 +1,8 @@
 import { defineConfig } from '@playwright/test';
-import { config as dotenvConfig } from 'dotenv';
-import { join, resolve } from 'path';
+import { config } from 'dotenv';
+import { join } from 'path';
 
-dotenvConfig({ path: resolve(__dirname, '.env'), override: true });
+config();
 
 export default defineConfig({
   testDir: join(process.cwd(), 'src', 'tests', 'api'),
@@ -10,7 +10,7 @@ export default defineConfig({
   timeout: 30 * 1000,
 
   expect: {
-    timeout: 5000,
+    timeout: 5 * 1000,
   },
 
   fullyParallel: false,
@@ -21,7 +21,7 @@ export default defineConfig({
 
   workers: process.env.CI ? 1 : undefined,
 
-  reporter: [['html', { open: 'never', outputFolder: join(process.cwd(), 'html-report') }]],
+  reporter: [['html', { open: 'never', outputFolder: join(process.cwd(), 'reports', 'html-report') }]],
 
   use: {
     actionTimeout: 0,

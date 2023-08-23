@@ -1,9 +1,9 @@
 import { defineConfig, devices } from '@playwright/test';
-import { config as dotenvConfig } from 'dotenv';
-import { join, resolve } from 'path';
+import { config } from 'dotenv';
+import { join } from 'path';
 import BaseConfig from './base.config';
 
-dotenvConfig({ path: resolve(__dirname, '.env'), override: true });
+config();
 
 export default defineConfig({
   testDir: join(process.cwd(), 'src', 'tests', 'accessibility'),
@@ -19,19 +19,19 @@ export default defineConfig({
   workers: process.env.CI ? 1 : 1,
 
   expect: {
-    timeout: 5000,
+    timeout: 5 * 1000,
   },
 
-  reporter: [['html', { open: 'never', outputFolder: join(process.cwd(), 'html-report') }]],
+  reporter: [['html', { open: 'never', outputFolder: join(process.cwd(), 'reports', 'html-report') }]],
 
-  outputDir: join(process.cwd(), 'test-results'),
+  outputDir: join(process.cwd(), 'reports', 'test-results'),
 
   use: {
     headless: false,
 
     ignoreHTTPSErrors: true,
 
-    actionTimeout: 10_000,
+    actionTimeout: 10 * 1000,
 
     baseURL: BaseConfig.webURL,
 

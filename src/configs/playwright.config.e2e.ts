@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
-import { config as dotenvConfig } from 'dotenv';
-import { join, resolve } from 'path';
+import { config } from 'dotenv';
+import { join } from 'path';
 import BaseConfig from './base.config';
 
 /**
@@ -8,7 +8,7 @@ import BaseConfig from './base.config';
  * https://github.com/motdotla/dotenv
  */
 
-dotenvConfig({ path: resolve(__dirname, '.env'), override: true });
+config();
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -36,14 +36,14 @@ export default defineConfig({
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 5000,
+    timeout: 5 * 1000,
   },
 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['html', { open: 'never', outputFolder: join(process.cwd(), 'html-report') }]],
+  reporter: [['html', { open: 'never', outputFolder: join(process.cwd(), 'reports', 'html-report') }]],
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
-  outputDir: join(process.cwd(), 'test-results'),
+  outputDir: join(process.cwd(), 'reports', 'test-results'),
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
