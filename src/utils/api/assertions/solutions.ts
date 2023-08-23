@@ -17,7 +17,7 @@ type ExpectToContain<T> = {
 type ExpectStatusCode = { api: string } & Omit<ExpectToEqual<number>, 'description'>;
 
 export const expectToEqual = async <T>({ actual, expected, description }: ExpectToEqual<T>): Promise<void> => {
-  await test.step(`Checking that "${description}" is equal to "${expected}"`, () => {
+  await test.step(`Checking that "${description}" is equal to "${JSON.stringify(expected)}"`, () => {
     expect(actual).toEqual(expected);
   });
 };
@@ -29,13 +29,13 @@ export const expectStatusCode = async ({ actual, expected, api }: ExpectStatusCo
 };
 
 export const expectToContain = async <T>({ actual, expected, description }: ExpectToContain<T>): Promise<void> => {
-  await test.step(`Checking that "${description}" contains "${expected}"`, () => {
+  await test.step(`Checking that "${description}" contains "${JSON.stringify(expected)}"`, () => {
     expect(actual).toContain(expected);
   });
 };
 
 export const expectNotToContain = async <T>({ actual, expected, description }: ExpectToContain<T>): Promise<void> => {
-  await test.step(`Checking that "${description}" does not contain "${expected}"`, () => {
+  await test.step(`Checking that "${description}" does not contain "${JSON.stringify(expected)}"`, () => {
     expect(actual).not.toContain(expected);
   });
 };

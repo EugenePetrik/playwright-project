@@ -1,5 +1,5 @@
-import test from '@playwright/test';
-import Ajv, { JSONSchemaType, Schema } from 'ajv';
+import { test } from '@playwright/test';
+import Ajv, { type JSONSchemaType, type Schema } from 'ajv';
 
 const ajv = new Ajv();
 

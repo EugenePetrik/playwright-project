@@ -1,4 +1,4 @@
-import { Locator, Page } from '@playwright/test';
+import type { Locator, Page } from '@playwright/test';
 import BasePage from './base.page';
 import logger from '../../configs/logger';
 import type { IUser } from '../../utils/types';
@@ -16,7 +16,10 @@ export default class SignUpPage extends BasePage {
 
   readonly haveAnAccountLink: Locator;
 
-  constructor(page: Page, readonly url: string = '/register') {
+  constructor(
+    page: Page,
+    readonly url: string = '/register',
+  ) {
     super(page);
     this.url = url;
     this.title = this.page.locator('h1', { hasText: 'Sign up' });

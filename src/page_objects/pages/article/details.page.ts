@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import type { Page } from '@playwright/test';
 import BasePage from '../base.page';
 import { Actions, Banner, CommentForm, Content } from '../../components/article_details';
 
@@ -11,7 +11,10 @@ export default class ArticleDetailsPage extends BasePage {
 
   readonly content: Content;
 
-  constructor(page: Page, readonly url: string = '/articles/') {
+  constructor(
+    page: Page,
+    readonly url: string = '/articles/',
+  ) {
     super(page);
     this.url = url;
     this.actions = new Actions(this.page.locator('div.article-actions'));

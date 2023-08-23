@@ -1,8 +1,8 @@
-import { APIRequestContext, test } from '@playwright/test';
+import { type APIRequestContext, test } from '@playwright/test';
 import { UsersAPIClient } from '../../api/core/users.api';
 import { getDefaultContext } from '../../utils/api/helpers';
 import { generateUser } from '../../utils/models/user';
-import { IAuthUser } from '../../utils/types';
+import type { IAuthUser } from '../../utils/types';
 import { expectStatusCode } from '../../utils/api/assertions/solutions';
 import { assertUserEmail, assertUsername } from '../../utils/api/assertions/api/users';
 import { validateSchema } from '../../utils/api/schema/validator';

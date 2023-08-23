@@ -1,6 +1,6 @@
-import { expect, Page, TestInfo } from '@playwright/test';
+import { expect, type Page, type TestInfo } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
-import { AxeResults } from 'axe-core';
+import type { AxeResults } from 'axe-core';
 import { attachAxeReport } from '../../utils/axe.reporter';
 import logger from '../../configs/logger';
 import BaseConfig from '../../configs/base.config';

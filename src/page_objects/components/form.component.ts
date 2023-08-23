@@ -1,6 +1,6 @@
-import { Locator, Page } from '@playwright/test';
+import type { Locator, Page } from '@playwright/test';
 import Component from './base.component';
-import { ICreateArticle } from '../../utils/types';
+import type { ICreateArticle } from '../../utils/types';
 import logger from '../../configs/logger';
 
 export class Form extends Component {

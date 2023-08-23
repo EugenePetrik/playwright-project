@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import type { Page } from '@playwright/test';
 import BasePage from './base.page';
 import { FavoritedArticles, MyArticles, Tabs, UserInfo } from '../components/profile';
 
@@ -11,7 +11,10 @@ export default class ProfilePage extends BasePage {
 
   readonly tabs: Tabs;
 
-  constructor(page: Page, readonly url: string = '/@') {
+  constructor(
+    page: Page,
+    readonly url: string = '/@',
+  ) {
     super(page);
     this.url = url;
     this.favoritedArticles = new FavoritedArticles(this.page.locator('[data-qa-type=article-list]'));

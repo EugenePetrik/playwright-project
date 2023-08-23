@@ -1,5 +1,5 @@
-import { TestInfo } from '@playwright/test';
-import { AxeResults } from 'axe-core';
+import type { TestInfo } from '@playwright/test';
+import type { AxeResults } from 'axe-core';
 
 export const attachAxeReport = async (testInfo: TestInfo, scanResults: AxeResults) => {
   if (scanResults.violations.length > 0) {

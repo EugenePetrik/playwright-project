@@ -1,10 +1,10 @@
-import { APIRequestContext, test } from '@playwright/test';
+import { type APIRequestContext, test } from '@playwright/test';
 import { generateUser } from '../../utils/models/user';
 import { getRandomArticle, getRandomUpdateArticle } from '../../utils/models/article';
 import { getAuthAPIContext } from '../../api/context/auth.context';
 import { ArticleAPIClient } from '../../api/core/articles.api';
 import { createUserAndGetToken } from '../../utils/api/helpers';
-import { IArticleResponse, IArticlesResponse } from '../../utils/types';
+import type { IArticleResponse, IArticlesResponse } from '../../utils/types';
 import { expectStatusCode } from '../../utils/api/assertions/solutions';
 import { assertArticleSlug, assertArticleTitle, assertArticlesNotContainArticle } from '../../utils/api/assertions/api/articles';
 import { validateSchema } from '../../utils/api/schema/validator';

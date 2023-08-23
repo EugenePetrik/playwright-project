@@ -15,7 +15,5 @@ export const randomString = (start = 10, end = 20, charSet: string = LETTERS_WIT
   return randomString;
 };
 
-export const randomListOfStrings = (start = 10, end = 20): string[] => {
-  const range = randomNumber(start, end);
-  return Array.from(Array(range).keys()).map(_ => randomString());
-};
+export const randomListOfStrings = (start = 10, end = 20): string[] =>
+  Array.from({ length: randomNumber(start, end) }, () => randomString());

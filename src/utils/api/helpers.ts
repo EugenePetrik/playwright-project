@@ -1,4 +1,4 @@
-import { APIRequestContext, APIResponse } from '@playwright/test';
+import type { APIRequestContext, APIResponse } from '@playwright/test';
 import { getDefaultAPIContext } from '../../api/context/default.context';
 import { UsersAPIClient } from '../../api/core/users.api';
 import { getAuthAPIContext } from '../../api/context/auth.context';

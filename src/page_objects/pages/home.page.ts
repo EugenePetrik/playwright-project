@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import type { Page } from '@playwright/test';
 import BasePage from './base.page';
 import { Banner, GlobalFeedTab, PopularTags, Tabs, YourFeedTab } from '../components/home';
 
@@ -13,7 +13,10 @@ export default class HomePage extends BasePage {
 
   readonly yourFeedTab: YourFeedTab;
 
-  constructor(page: Page, readonly url: string = '/') {
+  constructor(
+    page: Page,
+    readonly url: string = '/',
+  ) {
     super(page);
     this.url = url;
     this.globalFeedTab = new GlobalFeedTab(this.page.locator('div.home-global'));

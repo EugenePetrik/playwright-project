@@ -1,4 +1,4 @@
-import { Locator } from '@playwright/test';
+import type { Locator } from '@playwright/test';
 import Component from './base.component';
 
 export default class UserInfo extends Component {

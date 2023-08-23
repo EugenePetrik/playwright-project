@@ -1,4 +1,4 @@
-import { Locator, Page } from '@playwright/test';
+import type { Locator, Page } from '@playwright/test';
 import Component from '../base.component';
 import UserInfo from '../user.info.component';
 
