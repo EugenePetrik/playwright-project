@@ -33,6 +33,12 @@ npm run test:visual
 npm run test:a11y
 ```
 
+#### Run Lighthouse Tests
+
+```bash
+npm run test:lighthouse
+```
+
 #### Run API Tests
 
 ```bash
