@@ -6,7 +6,7 @@ import BaseConfig from './base.config';
 config();
 
 export default defineConfig({
-  globalSetup: require.resolve(join(process.cwd(), 'src', 'tests', 'lighthouse', 'global.setup.ts')),
+  // globalSetup: require.resolve(join(process.cwd(), 'src', 'tests', 'lighthouse', 'global.setup.ts')),
 
   testDir: join(process.cwd(), 'src', 'tests', 'lighthouse'),
 
@@ -16,9 +16,9 @@ export default defineConfig({
     timeout: 5 * 1000,
   },
 
-  fullyParallel: true,
+  fullyParallel: !!process.env.CI,
 
-  workers: process.env.CI ? 1 : undefined,
+  workers: 1,
 
   retries: process.env.CI ? 2 : 0,
 

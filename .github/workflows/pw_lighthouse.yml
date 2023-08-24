@@ -38,7 +38,7 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright E2E tests
-        run: xvfb-run npm run test:lighthouse --shard ${{ matrix.shard }}
+        run: xvfb-run npx playwright test --config src/configs/playwright.config.lighthouse.ts --shard ${{ matrix.shard }}
       - name: Upload blob report to GitHub Actions Artifacts
         if: always()
         uses: actions/upload-artifact@v3
