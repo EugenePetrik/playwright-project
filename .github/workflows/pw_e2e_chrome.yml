@@ -15,8 +15,8 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run check-all
-  test:
-    needs: lint
+  playwright-tests:
+    needs: [lint]
     timeout-minutes: 60
     runs-on: ubuntu-latest
     env:
@@ -41,4 +41,4 @@ jobs:
         with:
           name: playwright-report
           path: reports/
-          retention-days: 30
+          retention-days: 10

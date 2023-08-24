@@ -16,18 +16,20 @@ export default defineConfig({
     timeout: 5 * 1000,
   },
 
-  fullyParallel: false,
+  fullyParallel: true,
 
-  workers: 1,
+  workers: process.env.CI ? 1 : undefined,
 
   retries: process.env.CI ? 2 : 0,
 
   forbidOnly: !!process.env.CI,
 
-  reporter: [
-    ['list', { printSteps: true }],
-    ['html', { outputFolder: join(process.cwd(), 'reports', 'html-report'), open: 'never' }],
-  ],
+  reporter: process.env.CI
+    ? [['list', { printSteps: true }], ['blob']]
+    : [
+        ['list', { printSteps: true }],
+        ['html', { outputFolder: join(process.cwd(), 'reports', 'html-report'), open: 'never' }],
+      ],
 
   outputDir: join(process.cwd(), 'reports', 'test-results'),
 
