@@ -40,7 +40,10 @@ export default defineConfig({
   },
 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['html', { open: 'never', outputFolder: join(process.cwd(), 'reports', 'html-report') }]],
+  reporter: [
+    ['list', { printSteps: true }],
+    ['html', { open: 'never', outputFolder: join(process.cwd(), 'reports', 'html-report') }],
+  ],
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
   outputDir: join(process.cwd(), 'reports', 'test-results'),
