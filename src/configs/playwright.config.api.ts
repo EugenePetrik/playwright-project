@@ -21,7 +21,10 @@ export default defineConfig({
 
   workers: process.env.CI ? 1 : undefined,
 
-  reporter: [['html', { open: 'never', outputFolder: join(process.cwd(), 'reports', 'html-report') }]],
+  reporter: [
+    ['list', { printSteps: true }],
+    ['html', { open: 'never', outputFolder: join(process.cwd(), 'reports', 'html-report') }],
+  ],
 
   use: {
     actionTimeout: 0,

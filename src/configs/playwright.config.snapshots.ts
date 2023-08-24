@@ -22,7 +22,10 @@ export default defineConfig({
     timeout: 5 * 1000,
   },
 
-  reporter: [['html', { open: 'never', outputFolder: join(process.cwd(), 'reports', 'html-report') }]],
+  reporter: [
+    ['list', { printSteps: true }],
+    ['html', { open: 'never', outputFolder: join(process.cwd(), 'reports', 'html-report') }],
+  ],
 
   outputDir: join(process.cwd(), 'reports', 'test-results'),
 
