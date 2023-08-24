@@ -15,7 +15,7 @@
     "visual:update:snapshots": "npm run test:visual --update-snapshots",
     "test:a11y": "npx playwright test --config src/configs/playwright.config.accessibility.ts --project chromium",
     "test:api": "npx playwright test --config src/configs/playwright.config.api.ts",
-    "test:lighthouse": "npx playwright test --config src/configs/playwright.config.lighthouse.ts --project chromium",
+    "test:lighthouse": "npx playwright test --config src/configs/playwright.config.lighthouse.ts",
     "test:debug": "PWDEBUG=1 npx playwright test --config src/configs/playwright.config.e2e.ts --project chromium",
     "test:debug:api": "DEBUG=pw:api npx playwright test --config src/configs/playwright.config.e2e.ts --project chromium",
     "html:report": "npx playwright show-report reports/html-report"

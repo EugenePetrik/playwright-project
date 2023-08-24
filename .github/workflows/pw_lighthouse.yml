@@ -2,7 +2,7 @@ name: Playwright Lighthouse Tests
 
 on:
   push:
-    branches: 
+    branches:
       - main
 
 jobs:
@@ -48,7 +48,7 @@ jobs:
           retention-days: 1
   merge-reports:
     if: always()
-    needs: [playwright-tests]
+    needs: [lint, playwright-tests]
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -65,7 +65,7 @@ jobs:
           name: all-blob-reports
           path: all-blob-reports
       - name: Merge into HTML Report
-        run: npx playwright merge-reports --reporter html ./all-blob-reports 
+        run: npx playwright merge-reports --reporter html ./all-blob-reports
       - name: Upload HTML report
         uses: actions/upload-artifact@v3
         with:
