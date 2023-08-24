@@ -33,9 +33,9 @@ jobs:
         run: npm ci
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-      - name: Run Playwright E2E tests
+      - name: Run Playwright Lighthouse tests
         run: xvfb-run npx playwright test --config src/configs/playwright.config.lighthouse.ts
-      - name: Save Playwright report
+      - name: Upload report to GitHub Actions Artifacts
         uses: actions/upload-artifact@v3
         if: always()
         with:
