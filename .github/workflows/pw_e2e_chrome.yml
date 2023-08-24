@@ -18,6 +18,10 @@ jobs:
   playwright-tests:
     needs: [lint]
     timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1/3, 2/3, 3/3]
     runs-on: ubuntu-latest
     env:
       WEB_URL: https://demo.learnwebdriverio.com
@@ -34,11 +38,37 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright E2E tests
-        run: xvfb-run npm run test:e2e
-      - name: Save Playwright report
-        uses: actions/upload-artifact@v3
+        run: xvfb-run npx playwright test --config src/configs/playwright.config.e2e.ts --project chromium  --shard ${{ matrix.shard }}
+      - name: Upload blob report to GitHub Actions Artifacts
         if: always()
+        uses: actions/upload-artifact@v3
         with:
-          name: playwright-report
-          path: reports/
+          name: all-blob-reports
+          path: blob-report
+          retention-days: 1
+  merge-reports:
+    if: always()
+    needs: [lint, playwright-tests]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Download blob reports from GitHub Actions Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: all-blob-reports
+          path: all-blob-reports
+      - name: Merge into HTML Report
+        run: npx playwright merge-reports --reporter html ./all-blob-reports
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v3
+        with:
+          name: html-report--attempt-${{ github.run_attempt }}
+          path: playwright-report
           retention-days: 10
