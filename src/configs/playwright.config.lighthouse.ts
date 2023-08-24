@@ -24,12 +24,10 @@ export default defineConfig({
 
   forbidOnly: !!process.env.CI,
 
-  reporter: process.env.CI
-    ? [['list', { printSteps: true }], ['blob']]
-    : [
-        ['list', { printSteps: true }],
-        ['html', { outputFolder: join(process.cwd(), 'reports', 'html-report'), open: 'never' }],
-      ],
+  reporter: [
+    ['list', { printSteps: true }],
+    ['html', { outputFolder: join(process.cwd(), 'reports', 'html-report'), open: 'never' }],
+  ],
 
   outputDir: join(process.cwd(), 'reports', 'test-results'),
 
