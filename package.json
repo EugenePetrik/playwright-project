@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "npx playwright install",
+    "prepare": "husky install",
     "format": "prettier --write .",
     "check-format": "prettier --check .",
     "check-lint": "eslint . --ext ts",
@@ -43,6 +44,7 @@
     "date-fns": "^2.30.0",
     "dayjs": "^1.11.9",
     "dotenv": "^16.3.1",
+    "husky": "^8.0.3",
     "lighthouse": "^9.6.8",
     "playwright-lighthouse": "^2.2.2"
   }
