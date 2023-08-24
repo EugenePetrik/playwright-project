@@ -16,7 +16,7 @@ export default defineConfig({
     timeout: 5 * 1000,
   },
 
-  fullyParallel: !!process.env.CI,
+  fullyParallel: false,
 
   workers: 1,
 
