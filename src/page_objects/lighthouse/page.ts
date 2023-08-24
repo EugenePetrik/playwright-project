@@ -2,8 +2,8 @@ import { join } from 'path';
 import { playAudit } from 'playwright-lighthouse';
 import { Page } from '@playwright/test';
 import lighthouseDesktopConfig from 'lighthouse/lighthouse-core/config/lr-desktop-config';
+import BaseConfig from '../../configs/base.config';
 import logger from '../../configs/logger';
-import BaseConfig from 'src/configs/base.config';
 
 export class LighthousePage {
   public page: Page;
