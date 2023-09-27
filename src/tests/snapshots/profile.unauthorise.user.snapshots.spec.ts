@@ -1,4 +1,4 @@
-import { test } from '../../utils/fixtures';
+import { test } from '../../utils/fixtures/fixturePages';
 import { createUserAndGetToken } from '../../utils/api/helpers';
 import { generateUser } from '../../utils/models/user';
 import profilesResponse from '../../utils/mocks/profiles.json';

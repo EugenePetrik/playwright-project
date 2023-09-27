@@ -1,5 +1,5 @@
 import { createUserAndGetToken } from '../../utils/api/helpers';
-import { test } from '../../utils/fixtures';
+import { test } from '../../utils/fixtures/fixturePages';
 import { generateUser } from '../../utils/models/user';
 import { expectToHaveValue, expectElementToBeVisible } from '../../utils/expect';
 

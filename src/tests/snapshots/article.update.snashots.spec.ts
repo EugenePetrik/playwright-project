@@ -1,4 +1,4 @@
-import { test } from '../../utils/fixtures';
+import { test } from '../../utils/fixtures/fixturePages';
 import { generateUser } from '../../utils/models/user';
 import { getRandomArticle } from '../../utils/models/article';
 import { createUserAndGetToken, getAuthContext } from '../../utils/api/helpers';

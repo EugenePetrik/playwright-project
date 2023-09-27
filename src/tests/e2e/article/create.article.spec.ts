@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { generateUser } from '../../../utils/models/user';
-import { test } from '../../../utils/fixtures';
+import { test } from '../../../utils/fixtures/fixturePages';
 import { createUserAndGetToken } from '../../../utils/api/helpers';
 import { getRandomArticle } from '../../../utils/models/article';
 import {

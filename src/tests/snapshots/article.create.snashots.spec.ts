@@ -1,4 +1,4 @@
-import { test } from '../../utils/fixtures';
+import { test } from '../../utils/fixtures/fixturePages';
 import { generateUser } from '../../utils/models/user';
 import { createUserAndGetToken } from '../../utils/api/helpers';
 import { expectElementToBeVisible } from '../../utils/expect';

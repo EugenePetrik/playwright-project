@@ -1,4 +1,4 @@
-import { test } from '../../utils/fixtures';
+import { test } from '../../utils/fixtures/fixturePages';
 import feedResponse from '../../utils/mocks/global.feed.json';
 import feedEmptyResponse from '../../utils/mocks/global.feed.empty.json';
 import tagsResponse from '../../utils/mocks/tags.json';

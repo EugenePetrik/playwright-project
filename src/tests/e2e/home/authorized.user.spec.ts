@@ -1,5 +1,5 @@
 import { generateUser } from '../../../utils/models/user';
-import { test } from '../../../utils/fixtures';
+import { test } from '../../../utils/fixtures/fixturePages';
 import { createUserAndGetToken, getAuthContext } from '../../../utils/api/helpers';
 import { getRandomArticle } from '../../../utils/models/article';
 import { ArticleAPIClient } from '../../../api/core/articles.api';

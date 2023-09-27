@@ -1,5 +1,5 @@
 import { createUser } from '../../utils/api/helpers';
-import { test } from '../../utils/fixtures';
+import { test } from '../../utils/fixtures/fixturePages';
 import { generateUser } from '../../utils/models/user';
 import { expectToHaveCount, expectElementsText, expectElementToBeVisible, expectToHaveAttribute } from '../../utils/expect';
 

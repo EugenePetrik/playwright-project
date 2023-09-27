@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test';
-import { test } from '../../utils/fixtures';
+import { test } from '../../utils/fixtures/fixturePages';
 import { expectElementToBeVisible } from '../../utils/expect';
 
 test.describe('Sign In page', () => {
