@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-
 import { expect, test } from '@playwright/test';
 
 type ExpectToEqual<T> = {
-  actual: T;
+  actual: string | number | boolean;
   expected: T;
   description: string;
 };
