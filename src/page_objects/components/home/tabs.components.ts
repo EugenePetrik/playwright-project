@@ -1,5 +1,6 @@
 import type { Locator } from '@playwright/test';
 import Component from '../base.component';
+import { Action } from '../../../lib/core';
 
 export class Tabs extends Component {
   readonly yourFeedTab: Locator;
@@ -13,6 +14,6 @@ export class Tabs extends Component {
   }
 
   async clickOnYourFeedTab(): Promise<void> {
-    await this.yourFeedTab.click();
+    await Action.click(this.yourFeedTab);
   }
 }

@@ -1,6 +1,7 @@
 import type { Page } from '@playwright/test';
 import BasePage from './base.page';
 import { Banner, GlobalFeedTab, PopularTags, Tabs, YourFeedTab } from '../components/home';
+import { Browser } from '../../lib/core';
 
 export default class HomePage extends BasePage {
   readonly globalFeedTab: GlobalFeedTab;
@@ -32,11 +33,7 @@ export default class HomePage extends BasePage {
 
   async loginViaAPI(authToken: string): Promise<void> {
     await this.goto();
-
-    await this.page.evaluate(token => {
-      localStorage.setItem('id_token', token);
-    }, authToken);
-
-    await this.page.reload();
+    await Browser.addLocalStorage({ authToken, page: this.page });
+    await Browser.reload({ page: this.page });
   }
 }

@@ -6,6 +6,7 @@ import logger from '../../configs/logger';
 import BaseConfig from '../../configs/base.config';
 import Header from '../components/header.component';
 import Footer from '../components/footer.component';
+import { Browser, Waiter } from '../../lib/core';
 
 interface IPage {
   readonly page: Page;
@@ -28,9 +29,7 @@ export default abstract class BasePage implements IPage {
 
   async goto(url: string): Promise<void> {
     logger.debug(`Navigate to URL - ${BaseConfig.webURL}${url}`);
-    await this.page.goto(url, {
-      waitUntil: 'domcontentloaded',
-    });
+    await Browser.goto({ url, page: this.page, waitUntil: 'domcontentloaded' });
   }
 
   async checkPageUrl(url = this.url): Promise<void> {
@@ -41,8 +40,8 @@ export default abstract class BasePage implements IPage {
     await expect(this.page).toHaveTitle(title);
   }
 
-  async waitForTimeout(time = 2_000): Promise<void> {
-    await this.page.waitForTimeout(time);
+  async waitForTimeout(timeout = 2_000): Promise<void> {
+    await Waiter.waitForTimeout({ page: this.page, timeout });
   }
 
   async mockResponse<T>(route: string, data: T): Promise<void> {
@@ -51,7 +50,10 @@ export default abstract class BasePage implements IPage {
     await this.page.route(route, async route => {
       return route.fulfill({
         status: 200,
-        headers: { 'Access-Control-Allow-Origin': '*', contentType: 'application/json; charset=utf-8' },
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          contentType: 'application/json; charset=utf-8',
+        },
         body: JSON.stringify(data),
       });
     });

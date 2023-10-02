@@ -1,6 +1,7 @@
 import type { Locator } from '@playwright/test';
 import Component from '../base.component';
 import { waitFor } from '../../../utils/common';
+import { Elements } from '../../../lib/core';
 
 export class PopularTags extends Component {
   readonly title: Locator;
@@ -15,7 +16,7 @@ export class PopularTags extends Component {
 
   async waitForPopularTags(): Promise<void> {
     await waitFor(async () => {
-      const tags = await this.tags.count();
+      const tags = (await Elements.getCount(this.tags)) as number;
       return tags > 0;
     });
   }

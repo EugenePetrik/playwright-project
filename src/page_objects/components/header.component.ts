@@ -1,5 +1,6 @@
 import type { Locator } from '@playwright/test';
 import Component from './base.component';
+import { Action } from '../../lib/core';
 
 export default class Header extends Component {
   readonly brandLogo: Locator;
@@ -25,14 +26,14 @@ export default class Header extends Component {
   }
 
   async clickOnSignUp() {
-    await this.signUpButton.click();
+    await Action.click(this.signUpButton);
   }
 
   async clickOnSignIn() {
-    await this.signInButton.click();
+    await Action.click(this.signInButton);
   }
 
   async clickOnSettings() {
-    await this.settingsButton.click();
+    await Action.click(this.settingsButton);
   }
 }

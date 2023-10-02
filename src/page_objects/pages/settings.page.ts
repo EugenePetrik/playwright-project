@@ -1,5 +1,6 @@
 import type { Locator, Page } from '@playwright/test';
 import BasePage from './base.page';
+import { Action, Waiter } from '../../lib/core';
 
 export default class SettingsPage extends BasePage {
   readonly title: Locator;
@@ -30,7 +31,7 @@ export default class SettingsPage extends BasePage {
   }
 
   async clickOnLogout(): Promise<void> {
-    await this.logoutButton.waitFor({ state: 'visible' });
-    await this.logoutButton.press('Enter');
+    await Waiter.waitFor({ element: this.logoutButton, state: 'visible' });
+    await Action.press(this.logoutButton, 'Enter');
   }
 }

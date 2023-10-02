@@ -1,6 +1,7 @@
 import type { Locator } from '@playwright/test';
 import Component from './base.component';
 import { waitFor } from '../../utils/common';
+import { Action, Element, Elements } from '../../lib/core';
 
 export class ArticlePreview extends Component {
   readonly title: Locator;
@@ -15,16 +16,16 @@ export class ArticlePreview extends Component {
 
   async waitForArticles(): Promise<void> {
     await waitFor(async () => {
-      const articles = await this.rootElement.count();
+      const articles = (await Elements.getCount(this.rootElement)) as number;
       return articles >= 1;
     });
   }
 
   async getArticleTitle(index = 0): Promise<string> {
-    return this.title.nth(index).textContent();
+    return (await Element.getText(this.title.nth(index))) as string;
   }
 
   async clickOnLikeButton(index = 0): Promise<void> {
-    return this.likeButton.nth(index).click();
+    await Action.click(this.likeButton.nth(index));
   }
 }

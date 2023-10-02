@@ -1,6 +1,7 @@
 import type { Locator, Page } from '@playwright/test';
 import Component from '../base.component';
 import UserInfo from '../user.info.component';
+import { Action } from '../../../lib/core';
 
 export class Banner extends Component {
   readonly page: Page;
@@ -29,10 +30,10 @@ export class Banner extends Component {
   }
 
   async clickOnArticleEditButton(): Promise<void> {
-    await Promise.all([this.page.waitForNavigation(), this.articleEditButton.click()]);
+    await Action.click(this.articleEditButton);
   }
 
   async clickOnArticleDeleteButton(): Promise<void> {
-    await Promise.all([this.page.waitForNavigation(), this.articleDeleteButton.click()]);
+    await Action.click(this.articleDeleteButton);
   }
 }

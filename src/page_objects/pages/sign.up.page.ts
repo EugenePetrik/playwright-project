@@ -2,6 +2,7 @@ import type { Locator, Page } from '@playwright/test';
 import BasePage from './base.page';
 import logger from '../../configs/logger';
 import type { IUser } from '../../utils/types';
+import { Action } from '../../lib/core';
 
 export default class SignUpPage extends BasePage {
   readonly title: Locator;
@@ -39,9 +40,9 @@ export default class SignUpPage extends BasePage {
 
     logger.debug(`Sign up user with - ${JSON.stringify(user)}`);
 
-    await this.usernameInput.fill(username);
-    await this.emailInput.fill(email);
-    await this.passwordInput.fill(password);
-    await this.signUpButton.click();
+    await Action.fill(this.usernameInput, username);
+    await Action.fill(this.emailInput, email);
+    await Action.fill(this.passwordInput, password);
+    await Action.click(this.signUpButton);
   }
 }

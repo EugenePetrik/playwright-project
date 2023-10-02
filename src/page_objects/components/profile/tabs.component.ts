@@ -1,5 +1,6 @@
 import type { Locator } from '@playwright/test';
 import Component from '../base.component';
+import { Action } from '../../../lib/core';
 
 export class Tabs extends Component {
   readonly myArticlesTab: Locator;
@@ -13,6 +14,6 @@ export class Tabs extends Component {
   }
 
   async clickOnFavoritedArticlesTab(): Promise<void> {
-    await this.favoritedArticlesTab.click();
+    await Action.click(this.favoritedArticlesTab);
   }
 }

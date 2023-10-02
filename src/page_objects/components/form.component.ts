@@ -2,6 +2,8 @@ import type { Locator, Page } from '@playwright/test';
 import Component from './base.component';
 import type { ICreateArticle } from '../../utils/types';
 import logger from '../../configs/logger';
+import { Action, Waiter } from '../../lib/core';
+import { TIMEOUTS } from '../../configs/timeouts';
 
 export class Form extends Component {
   readonly page: Page;
@@ -31,17 +33,17 @@ export class Form extends Component {
 
     logger.debug(`Create an article with - ${JSON.stringify({ title, description, body, tagList })}`);
 
-    await this.titleInput.fill(title);
-    await this.descriptionInput.fill(description);
-    await this.bodyInput.fill(body);
+    await Action.fill(this.titleInput, title);
+    await Action.fill(this.descriptionInput, description);
+    await Action.fill(this.bodyInput, body);
 
     // eslint-disable-next-line no-restricted-syntax
     for await (const tag of tagList) {
-      await this.tagsInput.fill(tag);
-      await this.page.keyboard.press('Enter');
-      await this.page.waitForTimeout(500);
+      await Action.fill(this.tagsInput, tag);
+      await Action.press(this.tagsInput, 'Enter');
+      await Waiter.waitForTimeout({ page: this.page, timeout: TIMEOUTS.HALF_A_SEC });
     }
 
-    await Promise.all([this.page.waitForNavigation(), this.publishArticleButton.click()]);
+    await Action.click(this.publishArticleButton);
   }
 }
