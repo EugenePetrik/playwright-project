@@ -10,9 +10,9 @@ export const test = base.extend({
 
     page.on('console', async (msg: ConsoleMessage) => {
       if (msg.type() === 'error') {
-        console.log(msg.page());
-        console.log(msg.text());
-        throw new Error('Error');
+        console.log('Page', msg.page());
+        console.log('Text', msg.text());
+        // throw new Error('Error');
       }
     });
 

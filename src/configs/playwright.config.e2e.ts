@@ -44,7 +44,7 @@ export default defineConfig({
     ? [['list', { printSteps: true }], ['blob']]
     : [
         ['list', { printSteps: true }],
-        ['html', { open: 'never' }],
+        ['html', { open: 'never', outputFolder: join(process.cwd(), 'reports', 'html-report') }],
       ],
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
