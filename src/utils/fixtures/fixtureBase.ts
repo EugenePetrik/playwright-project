@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 
 import { type ConsoleMessage, test as base } from '@playwright/test';
+import logger from '../../configs/logger';
 
 export const test = base.extend({
   page: async ({ page }, use) => {
@@ -10,8 +11,8 @@ export const test = base.extend({
 
     page.on('console', async (msg: ConsoleMessage) => {
       if (msg.type() === 'error') {
-        console.log('Page', msg.page());
-        console.log('Text', msg.text());
+        logger.debug(`Page ${JSON.stringify(msg.page())}`);
+        logger.debug(`Text ${JSON.stringify(msg.text())}`);
         // throw new Error('Error');
       }
     });
