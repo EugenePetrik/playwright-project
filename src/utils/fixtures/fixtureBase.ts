@@ -11,6 +11,7 @@ export const test = base.extend({
 
     page.on('console', async (msg: ConsoleMessage) => {
       if (msg.type() === 'error') {
+        logger.debug(`Page URL ${page.url()}`);
         logger.debug(`Page ${JSON.stringify(msg.page())}`);
         logger.debug(`Text ${JSON.stringify(msg.text())}`);
         // throw new Error('Error');
