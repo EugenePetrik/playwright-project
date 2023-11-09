@@ -42,14 +42,14 @@ jobs:
         if: always()
         with:
           name: playwright-report
-          path: reports/
+          path: playwright-report/
           retention-days: 10
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload artifacts
         uses: actions/upload-pages-artifact@v1
         with:
-          path: report/
+          path: playwright-report/
       - name: Deploy to Github Pages
         id: deployment
         uses: actions/deploy-pages@v1

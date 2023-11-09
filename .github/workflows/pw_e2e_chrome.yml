@@ -1,9 +1,9 @@
 name: Playwright E2E Tests
 
 on:
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
   schedule:
     - cron: '0 23 * * 1-5'
 
