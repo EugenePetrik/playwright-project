@@ -7,16 +7,24 @@ on:
   schedule:
     - cron: '0 23 * * 1-5'
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
       - name: Get code
         uses: actions/checkout@v3
+
       - name: Install dependencies
         run: npm ci
+
       - name: Lint
         run: npm run check-all
+
   playwright-tests:
     needs: [lint]
     timeout-minutes: 60
@@ -31,16 +39,21 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
+
       - name: Install NodeJS
         uses: actions/setup-node@v3
         with:
           node-version: 18
+
       - name: Install dependencies
         run: npm ci
+
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
+
       - name: Run Playwright E2E tests
         run: xvfb-run npx playwright test --config src/configs/playwright.config.e2e.ts --project chromium  --shard ${{ matrix.shard }}
+
       - name: Upload blob report to GitHub Actions Artifacts
         if: always()
         uses: actions/upload-artifact@v3
@@ -48,6 +61,7 @@ jobs:
           name: all-blob-reports
           path: blob-report
           retention-days: 1
+
   merge-reports:
     if: always()
     needs: [lint, playwright-tests]
@@ -55,22 +69,39 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
+
       - name: Install NodeJS
         uses: actions/setup-node@v3
         with:
           node-version: 18
+
       - name: Install dependencies
         run: npm ci
+
       - name: Download blob reports from GitHub Actions Artifacts
         uses: actions/download-artifact@v3
         with:
           name: all-blob-reports
           path: all-blob-reports
+
       - name: Merge into HTML Report
         run: npx playwright merge-reports --reporter html ./all-blob-reports
+
       - name: Upload HTML report
         uses: actions/upload-artifact@v3
         with:
           name: html-report--attempt-${{ github.run_attempt }}
           path: playwright-report
           retention-days: 10
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+
+      - name: Upload artifacts
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: playwright-report
+
+      - name: Deploy to Github Pages
+        id: deployment
+        uses: actions/deploy-pages@v1.2.9

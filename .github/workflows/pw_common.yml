@@ -25,10 +25,13 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
+
       - name: Install dependencies
         run: npm ci
+
       - name: Lint
         run: npm run check-all
+
   playwright-tests:
     needs: [lint]
     timeout-minutes: 60
@@ -39,26 +42,34 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
+
       - name: Install NodeJS
         uses: actions/setup-node@v3
         with:
           node-version: 18
+
       - name: Install dependencies
         run: npm ci
+
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
+
       - name: Run Playwright E2E tests
         if: github.event.inputs.deployment_target == 'e2e'
         run: xvfb-run npx playwright test --config src/configs/playwright.config.e2e.ts --project chromium
+
       - name: Run Playwright Lighthouse tests
         if: github.event.inputs.deployment_target == 'lighthouse'
         run: xvfb-run npx playwright test --config src/configs/playwright.config.lighthouse.ts
+
       - name: Run Playwright a11y tests
         if: github.event.inputs.deployment_target == 'a11y'
         run: xvfb-run npx playwright test --config src/configs/playwright.config.accessibility.ts --project chromium
+
       - name: Run Playwright API tests
         if: github.event.inputs.deployment_target == 'api'
         run: xvfb-run npx playwright test --config src/configs/playwright.config.api.ts
+
       - name: Upload report to GitHub Actions Artifacts
         uses: actions/upload-artifact@v3
         if: always()
@@ -66,12 +77,3 @@ jobs:
           name: playwright-report
           path: reports/
           retention-days: 10
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
-      - name: Upload artifacts
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: reports/html-report/
-      - name: Deploy to Github Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
