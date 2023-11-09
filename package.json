@@ -24,12 +24,12 @@
   "author": "Yevhen Petryk",
   "license": "ISC",
   "devDependencies": {
-    "@types/lodash": "^4.14.199",
-    "@typescript-eslint/eslint-plugin": "^6.7.5",
-    "eslint": "^8.51.0",
+    "@types/lodash": "^4.14.201",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "eslint": "^8.53.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-playwright": "^0.16.0",
+    "eslint-plugin-playwright": "^0.18.0",
     "eslint-plugin-prettier": "^5.0.1",
     "lodash": "^4.14.197",
     "prettier": "^3.0.3",
@@ -37,8 +37,8 @@
     "winston": "^3.11.0"
   },
   "dependencies": {
-    "@axe-core/playwright": "^4.8.0",
-    "@faker-js/faker": "^8.1.0",
+    "@axe-core/playwright": "^4.8.1",
+    "@faker-js/faker": "^8.2.0",
     "@playwright/test": "^1.39.0",
     "ajv": "^8.12.0",
     "date-fns": "^2.30.0",
