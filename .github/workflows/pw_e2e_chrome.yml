@@ -148,6 +148,6 @@ jobs:
 
       - name: Output Report URL as Worfklow Annotation
         run: |
-          FULL_HTML_REPORT_URL=https://eugenepetrik.github.io/pw-github-pages-history/$HTML_REPORT_URL_PATH
+          FULL_HTML_REPORT_URL=https://eugenepetrik.github.io/playwright-project/$HTML_REPORT_URL_PATH
   
           echo "::notice title=📋 Published Playwright Test Report::$FULL_HTML_REPORT_URL"
