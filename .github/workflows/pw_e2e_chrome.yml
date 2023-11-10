@@ -71,7 +71,7 @@ jobs:
   merge-reports:
     name: Merge Playwright HTML Reports
     if: always()
-    needs: [lint, playwright-tests]
+    needs: [playwright-tests]
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -104,7 +104,7 @@ jobs:
   publish_report:
     name: Publish Playwright HTML Report
     if: success() || needs.test.result == 'failure'
-    needs: [playwright-tests, merge-reports]
+    needs: [merge-reports]
     runs-on: ubuntu-latest
     continue-on-error: true
     env:
