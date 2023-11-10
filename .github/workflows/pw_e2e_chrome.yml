@@ -58,7 +58,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright E2E tests
-        run: xvfb-run npm run test:e2e --shard ${{ matrix.shard }}
+        run: xvfb-run npm run test:e2e -- --shard ${{ matrix.shard }}
 
       - name: Upload blob report to GitHub Actions Artifacts
         if: always()
