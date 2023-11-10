@@ -14,6 +14,7 @@ permissions:
 
 jobs:
   lint:
+    name: Run Linters
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -26,6 +27,7 @@ jobs:
         run: npm run check-all
 
   playwright-tests:
+    name: Run Tests
     needs: [lint]
     timeout-minutes: 60
     strategy:
@@ -63,6 +65,7 @@ jobs:
           retention-days: 1
 
   merge-reports:
+    name: Merge HTML Reports
     if: always()
     needs: [lint, playwright-tests]
     runs-on: ubuntu-latest

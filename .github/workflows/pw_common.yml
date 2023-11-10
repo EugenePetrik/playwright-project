@@ -21,6 +21,7 @@ permissions:
 
 jobs:
   lint:
+    name: Run Linters
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -33,6 +34,7 @@ jobs:
         run: npm run check-all
 
   playwright-tests:
+    name: Run Tests
     needs: [lint]
     timeout-minutes: 60
     runs-on: ubuntu-latest
