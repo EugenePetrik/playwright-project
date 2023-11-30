@@ -3,7 +3,6 @@ import { generateUser } from '../../utils/models/user';
 import { getRandomArticle } from '../../utils/models/article';
 import { createUserAndGetToken, getAuthContext } from '../../utils/api/helpers';
 import { ArticleAPIClient } from '../../api/core/articles.api';
-import type { IArticleResponse } from '../../utils/types';
 import { expectElementToBeVisible } from '../../utils/expect';
 import userResponse from '../../utils/mocks/user.json';
 import updateArticleResponse from '../../utils/mocks/article.json';
@@ -22,7 +21,7 @@ test.describe('Article Details page - snapshots', () => {
     const context = await getAuthContext({ token });
     const articleClient = new ArticleAPIClient(context);
     const createArticleResp = await articleClient.createArticleAPI({ title, description, body, tagList });
-    ({ slug } = ((await createArticleResp.json()) as IArticleResponse).article);
+    ({ slug } = createArticleResp.article);
   });
 
   test.beforeEach(async ({ homePage, articleDetailsPage }) => {

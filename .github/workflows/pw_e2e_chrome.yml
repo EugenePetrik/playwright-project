@@ -49,7 +49,7 @@ jobs:
       - name: Install NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: "20.x"
+          node-version: '20.x'
 
       - name: Install dependencies
         run: npm ci
@@ -80,7 +80,7 @@ jobs:
       - name: Install NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: "20.x"
+          node-version: '20.x'
 
       - name: Install dependencies
         run: npm ci
@@ -131,14 +131,14 @@ jobs:
         run: |
           git add .
           git commit -m "workflow: add HTML report for run-id ${{ github.run_id }} (attempt:  ${{ github.run_attempt }})"
-  
+
           while true; do
             git pull --rebase
             if [ $? -ne 0 ]; then
               echo "Failed to rebase. Please review manually."
               exit 1
             fi
-  
+
             git push
             if [ $? -eq 0 ]; then
               echo "Successfully pushed HTML report to repo."
@@ -149,5 +149,5 @@ jobs:
       - name: Output Report URL as Worfklow Annotation
         run: |
           FULL_HTML_REPORT_URL=https://eugenepetrik.github.io/playwright-project/$HTML_REPORT_URL_PATH
-  
+
           echo "::notice title=📋 Published Playwright Test Report::$FULL_HTML_REPORT_URL"

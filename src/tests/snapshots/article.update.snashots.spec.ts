@@ -3,7 +3,6 @@ import { generateUser } from '../../utils/models/user';
 import { getRandomArticle } from '../../utils/models/article';
 import { createUserAndGetToken, getAuthContext } from '../../utils/api/helpers';
 import { ArticleAPIClient } from '../../api/core/articles.api';
-import type { IArticleResponse } from '../../utils/types';
 import { expectElementSnapshot, expectElementToBeVisible } from '../../utils/expect';
 import updateArticleResponse from '../../utils/mocks/article.json';
 import MOCK_ROUTES from '../../utils/mock.routes';
@@ -20,7 +19,7 @@ test.describe('Update Article page - snapshots', () => {
     const context = await getAuthContext({ token });
     const articleClient = new ArticleAPIClient(context);
     const createArticleResp = await articleClient.createArticleAPI({ title, description, body, tagList });
-    ({ slug } = ((await createArticleResp.json()) as IArticleResponse).article);
+    ({ slug } = createArticleResp.article);
   });
 
   test.beforeEach(async ({ homePage, updateArticlePage }) => {

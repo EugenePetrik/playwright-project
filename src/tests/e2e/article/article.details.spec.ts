@@ -4,7 +4,6 @@ import { test } from '../../../utils/fixtures/fixturePages';
 import { createUserAndGetToken, getAuthContext } from '../../../utils/api/helpers';
 import { getRandomArticle } from '../../../utils/models/article';
 import { ArticleAPIClient } from '../../../api/core/articles.api';
-import type { IArticleResponse } from '../../../utils/types';
 import { expectElementToBeHidden, expectElementToBeVisible, expectElementToHaveText, expectElementsText } from '../../../utils/expect';
 
 test.describe.configure({ mode: 'serial' });
@@ -21,7 +20,7 @@ test.describe('Article Details', () => {
     const context = await getAuthContext({ token });
     const articleClient = new ArticleAPIClient(context);
     const createArticleResp = await articleClient.createArticleAPI({ title, description, body, tagList });
-    ({ slug } = ((await createArticleResp.json()) as IArticleResponse).article);
+    ({ slug } = createArticleResp.article);
   });
 
   test.describe('as unauthorized user', () => {

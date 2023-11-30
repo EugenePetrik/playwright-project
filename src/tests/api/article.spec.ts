@@ -4,8 +4,6 @@ import { getRandomArticle, getRandomUpdateArticle } from '../../utils/models/art
 import { getAuthAPIContext } from '../../api/context/auth.context';
 import { ArticleAPIClient } from '../../api/core/articles.api';
 import { createUserAndGetToken } from '../../utils/api/helpers';
-import type { IArticleResponse, IArticlesResponse } from '../../utils/types';
-import { expectStatusCode } from '../../utils/api/assertions/solutions';
 import { assertArticleSlug, assertArticleTitle, assertArticlesNotContainArticle } from '../../utils/api/assertions/api/articles';
 import { validateSchema } from '../../utils/api/schema/validator';
 import { articleSchema } from '../../utils/api/schema/api/articles.schema';
@@ -26,17 +24,15 @@ test.describe('Articles', () => {
     const articleClient = new ArticleAPIClient(context);
 
     const createArticleResp = await articleClient.createArticleAPI(article);
-    const createArticleJson = (await createArticleResp.json()) as IArticleResponse;
 
-    await expectStatusCode({ actual: createArticleResp.status(), expected: 200, api: createArticleResp.url() });
-    await assertArticleTitle({ actualArticle: createArticleJson, expectedArticle: article });
+    await assertArticleTitle({ actualArticle: createArticleResp, expectedArticle: article });
 
-    await validateSchema({ schema: articleSchema, json: createArticleJson });
+    await validateSchema({ schema: articleSchema, json: createArticleResp });
 
-    const { slug } = createArticleJson.article;
+    const { slug } = createArticleResp.article;
 
     const getArticleResponse = await articleClient.getArticleAPI(slug);
-    await assertArticleSlug({ actualArticle: createArticleJson, expectedArticle: (await getArticleResponse.json()) as IArticleResponse });
+    await assertArticleSlug({ actualArticle: createArticleResp, expectedArticle: getArticleResponse });
   });
 
   test('Update article', async () => {
@@ -44,20 +40,17 @@ test.describe('Articles', () => {
     const articleClient = new ArticleAPIClient(context);
 
     const createArticleResp = await articleClient.createArticleAPI(article);
-    const createArticleJson = (await createArticleResp.json()) as IArticleResponse;
 
-    const { slug } = createArticleJson.article;
+    const { slug } = createArticleResp.article;
 
     const newArticle = getRandomUpdateArticle({ slug, user });
     const updateArticleResp = await articleClient.updateArticleAPI(slug, newArticle);
-    const updateArticleJson = (await updateArticleResp.json()) as IArticleResponse;
 
-    await assertArticleSlug({ actualArticle: updateArticleJson, expectedArticle: createArticleJson });
-    await assertArticleTitle({ actualArticle: updateArticleJson, expectedArticle: newArticle });
+    await assertArticleSlug({ actualArticle: updateArticleResp, expectedArticle: createArticleResp });
+    await assertArticleTitle({ actualArticle: updateArticleResp, expectedArticle: newArticle });
 
     const getArticleResponse = await articleClient.getArticleAPI(slug);
-    const getArticleJson = (await getArticleResponse.json()) as IArticleResponse;
-    await assertArticleSlug({ actualArticle: updateArticleJson, expectedArticle: getArticleJson });
+    await assertArticleSlug({ actualArticle: updateArticleResp, expectedArticle: getArticleResponse });
   });
 
   test('Delete article', async () => {
@@ -65,14 +58,12 @@ test.describe('Articles', () => {
     const articleClient = new ArticleAPIClient(context);
 
     const createArticleResp = await articleClient.createArticleAPI(article);
-    const createArticleJson = (await createArticleResp.json()) as IArticleResponse;
 
-    const { slug } = createArticleJson.article;
+    const { slug } = createArticleResp.article;
 
     await articleClient.deleteArticleAPI(slug);
 
     const getArticlesResp = await articleClient.getArticlesAPI();
-    const getArticlesJson = (await getArticlesResp.json()) as IArticlesResponse;
-    await assertArticlesNotContainArticle({ actualArticle: getArticlesJson, expectedArticle: createArticleJson });
+    await assertArticlesNotContainArticle({ actualArticle: getArticlesResp, expectedArticle: createArticleResp });
   });
 });

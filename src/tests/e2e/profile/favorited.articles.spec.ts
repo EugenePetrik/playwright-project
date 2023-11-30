@@ -11,7 +11,6 @@ import {
   expectElementToHaveText,
   expectToHaveCount,
 } from '../../../utils/expect';
-import type { IArticleResponse } from '../../../utils/types';
 
 test.describe.configure({ mode: 'serial' });
 
@@ -49,7 +48,7 @@ test.describe('Profile - Favorited articles', () => {
     test.beforeAll(async () => {
       const articleClient = new ArticleAPIClient(context);
       const createArticleResp = await articleClient.createArticleAPI({ title, description, body, tagList });
-      const { slug } = ((await createArticleResp.json()) as IArticleResponse).article;
+      const { slug } = createArticleResp.article;
       await articleClient.addArticleToFavoriteAPI(slug);
     });
 
